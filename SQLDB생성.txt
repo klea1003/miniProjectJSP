@@ -1,0 +1,20 @@
+--DB생성 
+
+create user c##mini identified by 1234;
+grant connect, resource, unlimited tablespace to c##mini;
+
+
+--USER 테이블 생성 
+CREATE TABLE USERS (
+    USERID VARCHAR2(20),
+    USERPASSWORD VARCHAR2(20),
+    USERNAME VARCHAR2(20),
+    USERGENDER VARCHAR2(20),
+    USEREMAIL VARCHAR2(20),
+    PRIMARY KEY(USERID)
+);
+
+--임시 유저 추가 
+INSERT INTO USERS VALUES('gildong', '123456', '홍길동', '남자', 'gildong@naver.com');
+
+COMMIT;
