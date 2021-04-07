@@ -54,7 +54,7 @@ public class UserDAO {
 			pstmt.setString(5, user.getUserEmail());
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 		return -1;
 	}
