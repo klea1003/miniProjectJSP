@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
+<%@ page import="book.Book"%>
+<%@ page import="book.BookDAO"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,9 +19,9 @@
 	    margin:0;
 	    padding:0;
 	}
+	
 	#div-box1{
 	    width: 90%;
-	    height: 600px;
 	    margin:20px auto 0 auto;
 	    text-align: center;
 	}
@@ -62,7 +65,11 @@
 		color: #333333;
 		font-weight: bold
 	}
-	</style>
+	#div-box2{
+	    width: 72%;
+	    margin:20px auto 0 auto;
+	}
+</style>
 <link rel="stylesheet" href="css/bootstrap.css">
 <title>JSP 게시판 웹 사이트</title>
 </head>
@@ -128,39 +135,31 @@
 		</div>
 	</nav>
 	<!-- 네비게이션 영역 끝 -->
-
-
-     
-    <div id="div-box1">
-	    <ul class="faceul">
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span>
-	        	<div class="line"></div><span class="number">20,000</span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	        <li><img src="images/123.jpg"><span><a href="#">universe</a></span></li>
-	    </ul>
-	</div>
 	
+	
+	<div id="div-box2">
+    	<p style="font-size:28px">Category</p>
+   	</div>
+     
+    <div id="div-box1">    	
+	
+	    <ul class="faceul">
+	    	<% 
+	    	BookDAO bookDAO = new BookDAO();
+			
+			ArrayList<Book> list = bookDAO.getList(0);
+	    	
+	    		for(int i=0; i<list.size(); i++) {
+	    	%>
+	    		<%Book book = list.get(i); %>
+	    		<li><img src="images/<%= book.getBookImagePath() %>.jpg">
+	    		<span><a href="product.jsp?bookID=<%= book.getBookID()%>"><%=book.getBookTitle() %></a></span>
+	        	<div class="line"></div><span class="number"><%=book.getBookPrice() %></span></li>
+	    	<%
+	    		}
+	    	%>
+	    </ul>
+	</div>	
 
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
