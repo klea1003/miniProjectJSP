@@ -15,7 +15,7 @@ public class BookDAO {
 
 	public BookDAO() {
 		try {
-			String dbURL = "jdbc:oracle:thin:@klea-home.iptime.org:1521:xe";
+			String dbURL = "jdbc:oracle:thin:@localhost:1521:xe";
 			String dbID = "C##mini";
 			String dbPassword = "1234";
 
@@ -25,6 +25,31 @@ public class BookDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	//하나의 책을 보는 메소드
+		public Book getBook(int bookID) {
+			String sql = "SELECT * FROM BOOK WHERE BOOKID = ?";
+			try {
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, bookID);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					Book book = new Book();
+					book.setBookID(rs.getInt(1));
+					book.setBookTitle(rs.getString(2));
+					book.setBookPrice(rs.getInt(3));
+					book.setBookAuthor(rs.getString(4));
+					book.setBookCategory(rs.getInt(5));
+					book.setBookPublisher(rs.getString(6));
+					book.setBookImagePath(rs.getString(7));
+					return book;
+				}
+				return null;
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
 	
 	// 전체 책 리스트 획득
 	public ArrayList<Book> getList(int category) {
