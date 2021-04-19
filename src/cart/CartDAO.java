@@ -57,7 +57,7 @@ public class CartDAO {
 	}
 	
 	public int addCart(int bookID, String userID, int bookAmount) {
-		String sql = "insert into CART values (?, ?, ?, ?, TO_DATE(?, 'MM-DD-YYYY HH24:MI:SS'), 0)";
+		String sql = "insert into CART values (?, ?, ?, ?, TO_DATE(?, 'MM-DD-YYYY HH24:MI:SS'), 0, 0)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, getNext());
@@ -99,7 +99,7 @@ public class CartDAO {
 	public ArrayList<CartStock> getStockList(String userID) {
 		String sql = "select b.bookID, b.bookTitle, b.bookPrice, SUM(c.BOOKAMOUNT) as TotalAmount, SUM(b.bookPrice*c.bookAmount) as TotalPrice "
 				+ "from cart c, book b "
-				+ "where c.bookid = b.bookid and c.userID = ? and orderCompleted = 0 "
+				+ "where c.bookid = b.bookid and c.userID = ? and orderCompleted = 0 and DELETECART = 0 "
 				+ "group by b.bookID, b.bookTitle, b.bookPrice";
 		ArrayList<CartStock> list = new ArrayList<CartStock>();
 		try {
@@ -124,8 +124,22 @@ public class CartDAO {
 	}
 	
 	public int order(int bookID, String userID) {
+		//실제 데이터를 삭제하는 것이 아니라 유효숫자를 '0'으로 수정한다
+		String sql = "update CART set ORDERCOMPLETED = 1 where bookID = ? and userID = ? and orderCompleted = 0 and DELETECART = 0";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bookID);
+			pstmt.setString(2, userID);			
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; //데이터베이스 오류 
+	}
+	
+	public int delete(int bookID, String userID) {
 		//실제 데이터를 삭제하는 것이 아니라 게시글 유효숫자를 '0'으로 수정한다
-		String sql = "update CART set ORDERCOMPLETED = 1 where bookID = ? and userID = ?";
+		String sql = "update CART set DELETECART = 1 where bookID = ? and userID = ? and orderCompleted = 0 and DELETECART = 0";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, bookID);

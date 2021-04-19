@@ -10,7 +10,7 @@
 <!-- Product Style sheet -->
 <style type="text/css">
 	.left {
-		width:50%;
+		width:40%;
 	    float:left;
 	    text-align: center;
 	}
@@ -91,7 +91,8 @@
 			</div>
 			<div class="empty1"></div>
 			<div class="info_one_line">
-				<input type="submit" class="btn btn-primary" value="장바구니">
+				<input type="submit" class="btn btn-primary" value="상품 주문">
+				<a href="cart.jsp"><button class="btn btn-secondary" type="button">장바구니</button></a>
 			</div>
 			<div class="empty1"></div>			
 			<div class="line1"></div>

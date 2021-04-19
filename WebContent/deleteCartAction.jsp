@@ -30,7 +30,7 @@ request.setCharacterEncoding("utf-8");
 	if(ids == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("alert('주문되는 상품이 없습니다.')");
+		script.println("alert('삭제되는 상품이 없습니다.')");
 		script.println("history.back()");
 		script.println("</script>");
 	} else {
@@ -38,7 +38,7 @@ request.setCharacterEncoding("utf-8");
 		CartDAO cartDAO = new CartDAO(); 
 		for(String id:ids){
 			int bookID = Integer.parseInt(id);		
-			int result = cartDAO.order(bookID, userID);
+			int result = cartDAO.delete(bookID, userID);
 			
 			if(result == -1) {
 				throw new SQLException("DB 에러");
@@ -47,8 +47,8 @@ request.setCharacterEncoding("utf-8");
 		
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("alert('주문 완료되었습니다.')");
-		script.println("location.href='orderComplete.jsp'");
+		script.println("alert('삭제 완료되었습니다.')");
+		script.println("location.href='cart.jsp'");
 		script.println("</script>");
 	}
 	%>
