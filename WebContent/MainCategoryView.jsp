@@ -21,7 +21,7 @@
 	    margin:20px auto 0 auto;
 	    text-align: center;
 	}
-	#div-box1 .faceul{
+	#div-box1 .main{
 	    width: 85%;   
 	    height: 550px;
 	    /*Make ul automatically center horizontally*/
@@ -30,36 +30,36 @@
 	#div-box1 li{
 	    /*Remove the style in front of li*/
 	    list-style-type:none;
-	    width: 200px;
-	    height: 260px;    
+	    width: 400px;
+	    height: 500px;    
 	    /* border:1px solid red; */
 	    /*To put li in a row, use left and left float*/
 	    float:left; 
-	    margin:10px 0 0 10px;  
+	    margin:20px 0 0 10px;  
 	}
-	.faceul img{
-	    width: 200px;	    
+	.main img{
+	    width: 400px;	    
 	}
-	.faceul span{
+	.main span{
 	    display: block;         
 	}
-	.faceul a:link{
+	.main a:link{
 	    color:black;
 	    text-decoration:none;
 	}
-	.faceul a:hover{
+	.main a:hover{
 	    color:red;
 	    text-decoration:underline;
 	}
 	.line{
-		width: 200px;
+		width: 400px;
 		border-bottom: 1px solid #e0e0e0;
 		position: absolute;
 	}
 	.number{
 		font-size: 12px;
 		color: #333333;
-		font-weight: bold
+		font-weight: bold;
 	}
 	#div-box2{
 	    width: 72%;
@@ -76,26 +76,30 @@
 		}
 	
 		BookDAO bookDAO = new BookDAO();
-		ArrayList<Book> list = bookDAO.getList(categoryNumber);		
 		Util util = new Util();
 	%>
 
 	<div id="div-box2">
-    	<p style="font-size:28px"><%= util.getCategoryName(categoryNumber) %></p>
+    	<p style="font-size:28px">장르별 베스트 셀러</p>
    	</div>
      
     <div id="div-box1">    	
 	
-	    <ul class="faceul">
+	    <ul class="main">
 	    	<% 
-	    	
-	    	
-	    		for(int i=0; i<list.size(); i++) {
+	    		for(int i=0; i<util.getCategoryLength(); i++){
 	    	%>
-	    		<%Book book = list.get(i); %>
-	    		<li><a href="product.jsp?bookID=<%= book.getBookID()%>"><img src="images/<%= book.getBookImagePath() %>.jpeg"></a>
-	    		<span><a href="product.jsp?bookID=<%= book.getBookID()%>"><%=book.getBookTitle() %></a></span>
-	        	<div class="line"></div><span class="number"><%=book.getBookPrice() %></span></li>
+	    		<%
+	    			ArrayList<Book> list = bookDAO.getList(i);
+	    			Book book = list.get(0);
+	    		%>
+	    		<li style="text-align:center">
+	    			<p><h4><%= util.getCategoryName(i)%></h4></p>
+		    		<a href="product.jsp?bookID=<%= book.getBookID()%>"><img src="images/<%= book.getBookImagePath() %>.jpeg"></a>
+		    		<p><a href="product.jsp?bookID=<%= book.getBookID()%>"><%=book.getBookTitle() %></a></p>
+		        	<div class="line"></div>
+		        	<span class="number"><%=book.getBookPrice() %></span>
+	        	</li>
 	    	<%
 	    		}
 	    	%>

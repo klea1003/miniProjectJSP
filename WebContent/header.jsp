@@ -60,39 +60,46 @@
 		<!-- 게시판 제목 이름 옆에 나타나는 메뉴 영역 -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="MainCategoryView.jsp">메인</a></li>
-				<li><a href="bbs.jsp">게시판</a></li>
-				<li><a href="MainCategoryView.jsp">상품</a></li>
+			
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">고객센터<span class="caret"></span></a> <!-- 드랍다운 아이템 영역 -->
+					<ul class="dropdown-menu">
+						<li><a href="bbs.jsp">공지사항</a></li>
+						<li><a href="bbs.jsp">FAQ</a></li>
+					</ul>
+				</li>
 			</ul>
-			<%
-				if(userID == null) {
-			%>
-				<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
-				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">접속하기<span class="caret"></span></a> <!-- 드랍다운 아이템 영역 -->
-						<ul class="dropdown-menu">
-							<li><a href="login.jsp">로그인</a></li>
-							<li><a href="join.jsp">회원가입</a></li>
-						</ul></li>
-				</ul>
-			<%
-				} else {
-			%>
-				<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
-				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">회원관리<span class="caret"></span></a> <!-- 드랍다운 아이템 영역 -->
-						<ul class="dropdown-menu">
-							<li><a href="logoutAction.jsp">로그아웃</a></li>
-						</ul></li>
-				</ul>
-			<%
-				}
-			%>
+			
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">마이페이지<span class="caret"></span></a> <!-- 드랍다운 아이템 영역 -->
+					<ul class="dropdown-menu">
+						<li><a href="bbs.jsp">장바구니</a></li>
+						<li><a href="bbs.jsp">정보수정</a></li>
+					</ul>
+				</li>
+			</ul>
+			
+	<%
+		if(userID == null) {
+	%>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="login.jsp">로그인</a></li>
+				<li><a href="join.jsp">회원가입</a></li>
+			</ul>
+	<%
+		} else {
+	%>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="logoutAction.jsp">로그아웃</a></li>
+			</ul>
+	<%
+		}
+	%>
+			
 			
 		</div>
 	</nav>
