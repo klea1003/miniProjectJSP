@@ -15,7 +15,7 @@ public class BbsDAO {
 	public BbsDAO() {
 		try {
 			String dbURL = "jdbc:oracle:thin:@localhost:1521:xe";
-			String dbID = "C##mini";
+			String dbID = "c##mini";
 			String dbPassword = "1234";
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");

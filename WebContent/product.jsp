@@ -69,7 +69,7 @@
 		
 	%>
 	<div>
-		<div class="left"><img src="images/1.jpg"></div>
+		<div class="left"><img src="images/<%= book.getBookImagePath() %>.jpeg"></div>  
 		<form class="info" method="post" action="cartAction.jsp">
 			<input type="hidden" name="bookID" value=<%= bookID %>>
 			<div class="line1"></div>

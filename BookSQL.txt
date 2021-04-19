@@ -3,11 +3,11 @@ DROP TABLE BOOK;
 
 CREATE TABLE BOOK (
     BOOKID NUMBER(8),
-    BOOKTILE VARCHAR2(20),
+    BOOKTITLE VARCHAR2(80),
     BOOKPRICE NUMBER(8),
-    BOOKAUTHOR VARCHAR2(20),
+    BOOKAUTHOR VARCHAR2(80),
     BOOKCATEGORY NUMBER(8),
-    BOOKPUBLISHER VARCHAR2(20),
+    BOOKPUBLISHER VARCHAR2(40),
     BOOKIMAGEPATH VARCHAR2(20),
     PRIMARY KEY(BOOKID)
 );
@@ -125,7 +125,7 @@ INSERT INTO BOOK VALUES (110, '인지유학의 이해', 25000, '이향준', 3, '
 INSERT INTO BOOK VALUES (111, '나 혼자, 간다', 12000, '미카엘 피나톤', 3, '빈티지하우스', 111);
 INSERT INTO BOOK VALUES (112, '전무님은 세일즈에 대해 이렇게 말했지', 11000, '김찬호', 3, '메이드마인드', 112);
 INSERT INTO BOOK VALUES (113, '안전운전 생활백서', 15000, '듀자미', 3, '렛츠북', 113);
-INSERT INTO BOOK VALUES (114, '뇌를 읽다( Leading Brain)', 18000, '프레데리케 파브리티우스, 한스 하게만│', 3, '빈티지하우스', 114);
+INSERT INTO BOOK VALUES (114, '뇌를 읽다( Leading Brain)', 18000, '프레데리케 파브리티우스, 한스 하게만', 3, '빈티지하우스', 114);
 INSERT INTO BOOK VALUES (115, '뭐든 시작하면 어떻게든 된다', 13000, '테스토스테론', 3, '빈티지하우스', 115);
 INSERT INTO BOOK VALUES (116, '전승과 교류 - ASIA CULTURE LAB ③', 9000, '가종수 외 10명', 3, '국립아시아문화전당', 116);
 INSERT INTO BOOK VALUES (117, '삶과 문화 - ASIA CULTURE LAB ②', 9000, '가종수 외 10명', 3, '국립아시아문화전당', 117);
@@ -166,7 +166,7 @@ INSERT INTO BOOK VALUES (151, 'Re·See·Pic Vol.7 서울', 13000, '권진희 외
 INSERT INTO BOOK VALUES (152, 'Local Table vol.1', 13000, '공공책방 편집팀', 5, '공공책방', 152);
 INSERT INTO BOOK VALUES (153, '굿푸드 코리아 2호, Spring 2021', 16000, '굿푸드 코리아 편집부', 5, '(주) 플레저미디어', 153);
 INSERT INTO BOOK VALUES (154, '계간 어린이와 문학 (2021 봄)', 12000, '편집부 외', 5, '편집부 외', 154);
-INSERT INTO BOOK VALUES (155, 'MELANCHOLIA(멜랑콜리아) 3호', 15000, '전인수', 5, ' MELANCHOLIA(멜랑콜리아)', 155);
+INSERT INTO BOOK VALUES (155, 'MELANCHOLIA 3호', 15000, '전인수', 5, ' MELANCHOLIA(멜랑콜리아)', 155);
 INSERT INTO BOOK VALUES (156, '히스테리안 비틀년 계간4호 : 십할 년', 10000, '강정아 외 12명', 5, '히스테리안', 156);
 INSERT INTO BOOK VALUES (157, '피치 바이 매거진 Issue No.4', 14000, '피치바이피치', 5, '피치바이피치', 157);
 INSERT INTO BOOK VALUES (158, '플랜비 매거진 vol.5', 12000, '플랜비', 5, '소로', 158);
@@ -188,7 +188,7 @@ INSERT INTO BOOK VALUES (173, '피치 바이 매거진 Issue No.2', 14000, '피�
 INSERT INTO BOOK VALUES (174, '파이플 9호', 6900, '사슴고래', 5, '사슴고래', 174);
 INSERT INTO BOOK VALUES (175, '한양의 한량', 11000, '서정현, 하주영', 5, '-', 175);
 INSERT INTO BOOK VALUES (176, '피치 바이 매거진 Issue No.1', 14000, '피치바이피치', 5, '피치바이피치', 176);
-INSERT INTO BOOK VALUES (177, 'MELANCHOLIA(멜랑콜리아) 2호', 15000, '전인수', 5, 'MELANCHOLIA(멜랑콜리아)', 177);
+INSERT INTO BOOK VALUES (177, 'MELANCHOLIA 2호', 15000, '전인수', 5, 'MELANCHOLIA(멜랑콜리아)', 177);
 INSERT INTO BOOK VALUES (178, '다채 2호', 17000, '다채', 5, '다채', 178);
 INSERT INTO BOOK VALUES (179, '계간 익주 3호', 5000, '와칸다 포에버', 5, '-', 179);
 INSERT INTO BOOK VALUES (180, '파이플 7호', 6900, '사슴고래', 5, '사슴고래', 180);

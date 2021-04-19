@@ -37,13 +37,8 @@ request.setCharacterEncoding("utf-8");
 	
 		CartDAO cartDAO = new CartDAO(); 
 		for(String id:ids){
-			System.out.println(id);
 			int bookID = Integer.parseInt(id);		
 			int result = cartDAO.order(bookID, userID);
-			
-			
-			System.out.println("결과");
-			System.out.println(result);
 			
 			if(result == -1) {
 				throw new SQLException("DB 에러");
