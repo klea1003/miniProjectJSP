@@ -14,7 +14,7 @@ public class UserDAO {
 	public UserDAO() {
 		try {
 			String dbURL = "jdbc:oracle:thin:@localhost:1521:xe";
-			String dbID = "C##mini";
+			String dbID = "c##mini";
 			String dbPassword = "1234";
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -57,5 +57,29 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return -1;
+	}
+	
+	public User getUser(String userID) {
+		String SQL = "SELECT * FROM USERS WHERE userID = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				User user = new User();
+				
+				user.setUserID(rs.getString(1));
+				user.setUserPassword(rs.getString(2));
+				user.setUserName(rs.getString(3));
+				user.setUserGender(rs.getString(4));
+				user.setUserEmail(rs.getString(5));
+				
+				return user;
+			}
+			return null; // 아이디가 없음
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null; // 데이터베이스 오류
 	}
 }
