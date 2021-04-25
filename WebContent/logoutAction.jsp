@@ -11,7 +11,7 @@
 		session.invalidate();
 	%>
 	<script>
-		location.href = 'main.jsp';
+		location.href = 'MainCategoryView.jsp';
 	</script>
 </body>
 </html>

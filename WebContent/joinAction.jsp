@@ -40,7 +40,7 @@ request.setCharacterEncoding("utf-8");
 		script.println("</script>");
 	} else {
 		UserDAO userDAO = new UserDAO();
-		int result = userDAO.join(user);
+		int result = userDAO.join(user, 0);
 		
 		if (result == -1) {
 			PrintWriter script = response.getWriter();

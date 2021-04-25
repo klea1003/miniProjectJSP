@@ -66,8 +66,8 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">고객센터<span class="caret"></span></a> <!-- 드랍다운 아이템 영역 -->
 					<ul class="dropdown-menu">
-						<li><a href="bbs.jsp">공지사항</a></li>
-						<li><a href="bbs.jsp">FAQ</a></li>
+						<li><a href="notice.jsp">공지사항</a></li>
+						<li><a href="faq.jsp">FAQ</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -78,7 +78,7 @@
 					aria-expanded="false">마이페이지<span class="caret"></span></a> <!-- 드랍다운 아이템 영역 -->
 					<ul class="dropdown-menu">
 						<li><a href="bbs.jsp">장바구니</a></li>
-						<li><a href="bbs.jsp">정보수정</a></li>
+						<li><a href="updateUser.jsp">정보수정</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -95,6 +95,10 @@
 	%>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="logoutAction.jsp">로그아웃</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><%= userID %> 님 환영합니다</a></li>
 			</ul>
 	<%
 		}
