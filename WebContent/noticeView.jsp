@@ -35,7 +35,7 @@
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글 보기</th>
+						<th colspan="2" style="background-color: #eeeeee; text-align: center;">공지사항 보기</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -66,9 +66,9 @@
 			<%
 				if(userID != null && userID.equals(notice.getUserID())){
 			%>
-					<a href="update.jsp?bbsID=<%= noticeID %>" class="btn btn-primary">수정</a>
+					<a href="updateNotice.jsp?bbsID=<%= noticeID %>" class="btn btn-primary">수정</a>
 					<a onclick="return confirm('정말로 삭제하시겠습니까?')" href=
-						"deleteAction.jsp?bbsID=<%= noticeID %>" class="btn btn-primary">삭제</a>
+						"deleteNoticeAction.jsp?bbsID=<%= noticeID %>" class="btn btn-primary">삭제</a>
 			<%
 				}
 			%>
