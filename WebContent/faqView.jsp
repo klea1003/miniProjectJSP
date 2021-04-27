@@ -67,9 +67,9 @@
 			<%
 				if(userID != null && userID.equals(faq.getUserID())){
 			%>
-					<a href="update.jsp?bbsID=<%= faqID %>" class="btn btn-primary">수정</a>
+					<a href="updateFaq.jsp?faqID=<%= faqID %>" class="btn btn-primary">수정</a>
 					<a onclick="return confirm('정말로 삭제하시겠습니까?')" href=
-						"deleteAction.jsp?bbsID=<%= faqID %>" class="btn btn-primary">삭제</a>
+						"deleteFaqAction.jsp?faqID=<%= faqID %>" class="btn btn-primary">삭제</a>
 			<%
 				}
 			%>
