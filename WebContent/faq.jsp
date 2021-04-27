@@ -39,7 +39,7 @@
 					%>
 						<tr>
 							<td><%= faq.getFaqID() %></td>
-							<td><a href="view.jsp?bbsID=<%= faq.getFaqID() %>">
+							<td><a href="faqView.jsp?faqID=<%= faq.getFaqID() %>">
 							<%= faq.getFaqTitle() %></a></td>
 							<td><%= faq.getUserID() %></td>
 							<td><%= faq.getFaqDate() %></td>
