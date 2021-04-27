@@ -39,7 +39,7 @@
 					%>
 						<tr>
 							<td><%= notice.getNoticeID() %></td>
-							<td><a href="view.jsp?bbsID=<%= notice.getNoticeID() %>">
+							<td><a href="noticeView.jsp?noticeID=<%= notice.getNoticeID() %>">
 							<%= notice.getNoticeTitle() %></a></td>
 							<td><%= notice.getUserID() %></td>
 							<td><%= notice.getNoticeDate() %></td>
@@ -52,12 +52,12 @@
 			<%
 				if(pageNumber != 1) {
 			%>
-				<a href="faq.jsp?pageNumber=<%=pageNumber - 1%>" class="btn btn-success btn-arrow-left">이전</a>
+				<a href="notice.jsp?pageNumber=<%=pageNumber - 1%>" class="btn btn-success btn-arrow-left">이전</a>
 			<%		
 				}
 				if(noticeDAO.nextPage(pageNumber + 1)) {
 			%>
-				<a href="faq.jsp?pageNumber=<%=pageNumber + 1 %>" class="btn btn-success btn-arrow-left">다음</a>
+				<a href="notice.jsp?pageNumber=<%=pageNumber + 1 %>" class="btn btn-success btn-arrow-left">다음</a>
 			<%
 				}
 			%>
