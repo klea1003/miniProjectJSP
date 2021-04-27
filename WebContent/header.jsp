@@ -13,9 +13,10 @@
 <style>
 
 .side {
-	width: 11%;
-	height: 85%;
-	background: #80cbc4;
+	width: 160px;
+	height: 350px;
+	/* background: #80cbc4; */
+	background: linear-gradient( to right, #80cbc4, #FFFFFF );
 	color: white;
 	float: left;
 }
@@ -115,14 +116,15 @@
 	<script src="js/bootstrap.js"></script>
 </head>
 
+<div class="fix1">
 <aside class="side">
 	<div>
 		<ul>
-			<li class="inaside"><a href="MainCategoryView.jsp">장르별 베스트 셀러</a></li>
+			<li class="inaside" style="border:1px solid black; font-family:굴림; font-weight:700 " ><a href="MainCategoryView.jsp">장르별 베스트 셀러</a></li>
 			<% 
 				for(int i=0; i<util.getCategoryLength(); i++){
 			%>
-				<li class="inaside">				
+				<li class="inaside" style="border:1px solid black; font-family:굴림; font-weight:700 ">				
 					<a href="categoryView.jsp?categoryNumber=<%= i%>"><%= util.getCategoryName(i)%></a>				
 				</li>
 
@@ -134,4 +136,5 @@
 		
 	</div>
 </aside>
+</div>
 </html>

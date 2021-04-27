@@ -65,6 +65,14 @@
 	    width: 72%;
 	    margin:20px auto 0 auto;
 	}
+	.fix2{
+	width:1500px;
+	margin-left:200px;
+	}
+	.fix3{
+	width:1000px;
+	margin-left:50px;
+	}
 </style>
 <jsp:include page="header.jsp" flush="false"/>
 </head>
@@ -78,11 +86,12 @@
 		BookDAO bookDAO = new BookDAO();
 		Util util = new Util();
 	%>
-
+	<div class="fix3">
 	<div id="div-box2">
-    	<p style="font-size:28px">장르별 베스트 셀러</p>
+    	<p style="font-size:28px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;장르별 베스트 셀러</p>
    	</div>
-     
+   	</div>
+     <div class="fix2">
     <div id="div-box1">    	
 	
 	    <ul class="main">
@@ -104,6 +113,7 @@
 	    		}
 	    	%>
 	    </ul>
+	</div>
 	</div>	
 </body>
 </html>

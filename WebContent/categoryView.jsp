@@ -17,7 +17,8 @@
 	}
 	
 	#div-box1{
-	    width: 90%;
+	    /* width: 90%; */
+	    width:95%;
 	    margin:20px auto 0 auto;
 	    text-align: center;
 	}
@@ -30,7 +31,7 @@
 	#div-box1 li{
 	    /*Remove the style in front of li*/
 	    list-style-type:none;
-	    width: 200px;
+	    width: auto;
 	    height: 260px;    
 	    /* border:1px solid red; */
 	    /*To put li in a row, use left and left float*/
@@ -65,6 +66,16 @@
 	    width: 72%;
 	    margin:20px auto 0 auto;
 	}
+	.container{
+		display:grid;
+		grid-template-rows:repeat(6, 3fr);
+		grid-template-columns:repeat(5, 1fr);
+		row-gap:20px;
+		position:relative;
+	}
+	.item{
+		margin-left:0;
+	}
 </style>
 <jsp:include page="header.jsp" flush="false"/>
 </head>
@@ -81,10 +92,10 @@
 	%>
 
 	<div id="div-box2">
-    	<p style="font-size:28px"><%= util.getCategoryName(categoryNumber) %></p>
+    	<p style="font-size:28px">&nbsp;&nbsp;&nbsp;<%= util.getCategoryName(categoryNumber) %></p>
    	</div>
      
-    <div id="div-box1">    	
+    <%-- <div id="div-box1">    	
 	
 	    <ul class="faceul">
 	    	<% 
@@ -93,13 +104,32 @@
 	    		for(int i=0; i<list.size(); i++) {
 	    	%>
 	    		<%Book book = list.get(i); %>
-	    		<li><a href="product.jsp?bookID=<%= book.getBookID()%>"><img src="images/<%= book.getBookImagePath() %>.jpeg"></a>
+	    		<li>
+	    		<a href="product.jsp?bookID=<%= book.getBookID()%>"><img src="images/<%= book.getBookImagePath() %>.jpeg"></a>
 	    		<span><a href="product.jsp?bookID=<%= book.getBookID()%>"><%=book.getBookTitle() %></a></span>
-	        	<div class="line"></div><span class="number"><%=book.getBookPrice() %></span></li>
+	        	<div class="line"></div><span class="number"><%=book.getBookPrice() %></span>
+	        	</li>
 	    	<%
 	    		}
 	    	%>
 	    </ul>
-	</div>	
+	</div>	 --%>
+	<div id="div-box1">    	
+	
+	    <ul class="faceul item container">
+	    	<% 
+	    	
+	    	
+	    		for(int i=0; i<list.size(); i++) {
+	    	%>
+	    		<%Book book = list.get(i); %>
+	    		<li class="item"><a href="product.jsp?bookID=<%= book.getBookID()%>"><img src="images/<%= book.getBookImagePath() %>.jpeg"></a>
+	    		<span><a href="product.jsp?bookID=<%= book.getBookID()%>"><%=book.getBookTitle() %></a></span>
+	        	<span class="line"></span><br><span class="number"><%=book.getBookPrice() %></span></li>
+	    	<%
+	    		}
+	    	%>
+	    </ul>
+	</div>
 </body>
 </html>
