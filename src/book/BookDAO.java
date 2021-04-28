@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import bbs.Bbs;
+
 
 public class BookDAO {
 	private Connection conn;

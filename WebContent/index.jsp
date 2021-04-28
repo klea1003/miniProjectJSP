@@ -11,7 +11,7 @@
 <body>
 	<!-- 로그인 페이지로 이동하는 스크립트 코드 -->
 	<script>
-		location.href="MainCategoryView.jsp";
+		location.href="product/MainCategoryView.jsp";
 	</script>
 </body>
 </html>
