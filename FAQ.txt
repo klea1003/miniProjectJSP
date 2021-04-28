@@ -8,11 +8,11 @@ CREATE TABLE FAQ (
     PRIMARY KEY(FAQID)
 );
 
-insert into faq values (1,'[ 상품 ] 독립출판물이란 무엇인가요?','root',to_char(TO_DATE,'yyyy.mm.dd hh24:mi'),
+insert into faq values (1,'[ 상품 ] 독립출판물이란 무엇인가요?','root',TO_DATE(TO_DATE,'yyyy.mm.dd hh24:mi'),
 '독립출판물이란 상업성을 떠나 창의적이고 실험적인 내용을 주제로 작가 개인이 기획하고 완성하는 저작물을 말합니다.
 인디펍에서는 시중 서점에서 쉽게 접할 수 없는 독립출판물을 소개합니다.',1);
 
-insert into faq values (2,'[ 반품/교환 ] 반품은 어떻게 하나요?','root',to_char(TO_DATE,'yyyy.mm.dd hh24:mi'),
+insert into faq values (2,'[ 반품/교환 ] 반품은 어떻게 하나요?','root',TO_DATE(TO_DATE,'yyyy.mm.dd hh24:mi'),
 '단순 변심에 의한 반품은 배송완료 후 7일 이내에 가능합니다.
 오배송/상품 하자에 의한 반품은 30일이내에만 접수가능합니다.
 회수 신청 시 택배 반송료 3,000원이 환불 금액에서 차감 후 환불 처리가 되며,
