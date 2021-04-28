@@ -13,8 +13,8 @@
 <style>
 
 .side {
-	width: 160px;
-	height: 350px;
+	width: 11%;
+	height: 85%;
 	/* background: #80cbc4; */
 	background: linear-gradient( to right, #80cbc4, #FFFFFF );
 	color: white;
@@ -120,11 +120,11 @@
 <aside class="side">
 	<div>
 		<ul>
-			<li class="inaside" style="border:1px solid black; font-family:굴림; font-weight:700 " ><a href="<%=request.getContextPath()%>/product/MainCategoryView.jsp">장르별 베스트 셀러</a></li>
+			<li class="inaside" style=" font-family:굴림; font-weight:700 " ><a href="<%=request.getContextPath()%>/product/MainCategoryView.jsp">장르별 베스트 셀러</a></li>
 			<% 
 				for(int i=0; i<util.getCategoryLength(); i++){
 			%>
-				<li class="inaside" style="border:1px solid black; font-family:굴림; font-weight:700 ">				
+				<li class="inaside" style=" font-family:굴림; font-weight:700 ">				
 					<a href="<%=request.getContextPath()%>/product/categoryView.jsp?categoryNumber=<%= i%>"><%= util.getCategoryName(i)%></a>				
 				</li>
 
