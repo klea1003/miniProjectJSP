@@ -66,5 +66,6 @@
 		</div>
 	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->
+	<jsp:include page="/include/footer.jsp" flush="false"/>
 </body>
 </html>

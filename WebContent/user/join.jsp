@@ -1,12 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<head>
+<style>
+.container .jumbotron{ /*!! 너비 조정 스타일 태그 및 선택자*/
+ 	position:relative;
+ 	width:400px;
+ 	margin-left:30%;
+}
+
+</style>
+
+</head>
 <html>
 <jsp:include page="/include/header.jsp" flush="false"/>
 <body>	
 	<!-- 회원가입 양식 -->
 	<div class="container">		<!-- 하나의 영역 생성 -->
-		<div class="col-lg-4">	<!-- 영역 크기 -->
+		<!-- <div class="col-lg-4"> -->	<!-- 영역 크기 --> <!-- !!이 태그 생략 -->
 			<!-- 점보트론은 특정 컨텐츠, 정보를 두드러지게 하기 위한 큰 박스 -->
 			<div class="jumbotron" style="padding-top: 20px;">
 				<form method="post" action="joinAction.jsp">
@@ -36,7 +47,8 @@
 					<input type="submit" class="btn btn-primary form-control" value="회원가입">
 				</form>
 			</div>
-		</div>	
+		<!-- </div>	 -->  <!-- !!이 태그 생략 -->
 	</div>
+	<jsp:include page="/include/footer.jsp" flush="false"/>
 </body>
 </html>

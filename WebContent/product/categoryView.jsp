@@ -16,18 +16,13 @@
 	padding: 0;
 }
 
-#div-box1 {
-	/* width: 90%; */
-	width: 95%;
-	margin: 20px auto 0 auto;
-	text-align: center;
-}
+
 
 #div-box1 .faceul {
 	width: 85%;
 	height: 550px;
 	/*Make ul automatically center horizontally*/
-	margin: 20px auto 0 auto;
+	margin: 20px auto 0 auto;	/* !!수정 부분 */
 }
 
 #div-box1 li {
@@ -38,7 +33,7 @@
 	/* border:1px solid red; */
 	/*To put li in a row, use left and left float*/
 	float: left;
-	margin: 10px 0 0 10px;
+	margin: 10px 0 0 10px;		/* !!수정 부분 */
 }
 
 .faceul img {
@@ -75,20 +70,24 @@
 	width: 72%;
 	margin: 20px auto 0 auto;
 }
-
+#div-box1 {
+	/* width: 90%; */
+	width: 95%;
+	margin: 20px auto 0 auto;
+	text-align: center;
+	position:relative;	/* !!수정 부분 */
+}
 .container2 {
 	display: grid;
 	grid-template-rows: repeat(6, 3fr);
 	grid-template-columns: repeat(5, 1fr);
-	row-gap: 20px;
-	column-gap: 10px;
-	position: relative;
+	/* row-gap: 20px;
+	column-gap: 10px; */
+	width:800px;
+	position:absolute;	/* !!수정 부분 */
+	left:180px;			/* !!수정 부분 */
 }
 
-.item2 {
-	/* margin-left:0; */
-	
-}
 </style>
 <jsp:include page="/include/header.jsp" flush="false" />
 </head>
@@ -137,6 +136,7 @@
 			<%
 				Book book = list.get(i);
 			%>
+			<div class="wrap">
 			<div class="item2">
 				<a href="product.jsp?bookID=<%=book.getBookID()%>"> <img
 					src="<%=request.getContextPath()%>/images/<%=book.getBookImagePath()%>.jpeg"></a>
@@ -146,6 +146,7 @@
 				<br> 
 				<span class="line" style="margin-left:20px;"> </span>
 				<span class="number"><%=book.getBookPrice()%>원</span>
+			</div>
 			</div>
 			<%
 				}

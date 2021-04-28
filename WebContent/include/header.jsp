@@ -122,7 +122,7 @@
 	</div>
 </nav>
 <!-- 네비게이션 영역 끝 -->
-<jsp:include page="/include/footer.jsp" flush="false"/>
+
 
 <!-- 부트스트랩 참조 영역 -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -139,7 +139,7 @@
 			%>
 		<div class="item1">
 
-			<a href="<%=request.getContextPath()%>/product/categoryView2.jsp?categoryNumber=<%= i%>"><%= util.getCategoryName(i)%></a>
+			<a href="<%=request.getContextPath()%>/product/categoryView.jsp?categoryNumber=<%= i%>"><%= util.getCategoryName(i)%></a>
 		</div>
 
 		<%

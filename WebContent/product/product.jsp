@@ -70,7 +70,7 @@
 	%>
 	<div>
 		<div class="left"><img src="<%=request.getContextPath()%>/images/<%= book.getBookImagePath() %>.jpeg"></div>  
-		<form class="info" method="post" action="cartAction.jsp">
+		<form class="info" method="post" action="../cart/cartAction.jsp">
 			<input type="hidden" name="bookID" value=<%= bookID %>>
 			<div class="line1"></div>
 			<div class="info_one_line"><h2><%= book.getBookTitle()%></h2></div>
@@ -87,16 +87,17 @@
 			<div class="line2"></div>
 			<div class="info_two_line">
 				<div class="info_left">수량</div>
-				<div><input name="bookAmount" value="1" type="text" style="width:40px;"></div>				
+				<div><input name="bookAmount" value="1" type="number" style="width:40px;"></div>	<!-- 인풋 타입 number로 교체(스핀박스) -->		
 			</div>
 			<div class="empty1"></div>
 			<div class="info_one_line">
 				<input type="submit" class="btn btn-primary" value="상품 주문">
-				<a href="cart.jsp"><button class="btn btn-secondary" type="button">장바구니</button></a>
+				<a href="../cart/cart.jsp"><button class="btn btn-secondary" type="button">장바구니</button></a> <!-- 상대경로 변경 -->
 			</div>
 			<div class="empty1"></div>			
 			<div class="line1"></div>
 		</form>	
 	</div>	
+	<jsp:include page="/include/footer.jsp" flush="false"/>
 </body>
 </html>

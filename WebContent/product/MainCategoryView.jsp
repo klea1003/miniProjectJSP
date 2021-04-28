@@ -18,7 +18,7 @@
 	
 	#div-box1{
 	    width: 90%;
-	    margin:20px auto 0 auto;
+	    margin:20px 0 0 100px;
 	    text-align: center;
 	}
 	#div-box1 .main{
@@ -66,7 +66,7 @@
 	    margin:20px auto 0 auto;
 	}
 	.fix2{
-	width:1500px;
+	width:1100px;
 	margin-left:200px;
 	}
 	.fix3{
@@ -74,9 +74,10 @@
 	margin-left:50px;
 	}
 </style>
-<jsp:include page="/include/header.jsp" flush="false"/>
+<%-- <jsp:include page="/include/header.jsp" flush="false"/> --%>
 </head>
 <body>
+<jsp:include page="/include/header.jsp" flush="false"/>
 	<% 
 		int categoryNumber = 1;
 		if (request.getParameter("categoryNumber") != null) {

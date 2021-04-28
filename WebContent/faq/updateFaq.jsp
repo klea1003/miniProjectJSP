@@ -70,7 +70,7 @@
 		</div>
 	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->
-
+<jsp:include page="/include/footer.jsp" flush="false"/>
 
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

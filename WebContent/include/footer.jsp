@@ -8,7 +8,7 @@
 <style>
 
 #footer{ 
-position:fixed;
+position:absolute;
 bottom:0;
   width:100%;
   background:#f4f4f4;
