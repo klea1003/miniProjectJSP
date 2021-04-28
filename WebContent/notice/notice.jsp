@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="bbs.BbsDAO"%>
-<%@ page import="bbs.Bbs"%>
+<%@ page import="notice.NoticeDAO"%>
+<%@ page import="notice.Notice"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
 </head>
-<jsp:include page="header.jsp" flush="false"/>
+<jsp:include page="/include/header.jsp" flush="false"/>
 <body>
 	<%
 	int pageNumber = 1;
@@ -18,6 +18,9 @@
 	
 	<!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
+		<div>
+	    	<p style="font-size:28px">공지사항</p>
+	   	</div>
 		<div class="row">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
@@ -30,16 +33,16 @@
 				</thead>
 				<tbody>
 					<%
-						BbsDAO bbsDAO = new BbsDAO();
-						ArrayList<Bbs> list = bbsDAO.getList(pageNumber);
-						for(int i = 0; i < list.size(); i++) {
+						NoticeDAO noticeDAO = new NoticeDAO();
+						ArrayList<Notice> list = noticeDAO.getList(pageNumber);
+						for(Notice notice: list) {
 					%>
 						<tr>
-							<td><%= list.get(i).getBbsID() %></td>
-							<td><a href="view.jsp?bbsID=<%= list.get(i).getBbsID() %>">
-							<%= list.get(i).getBbsTitle() %></a></td>
-							<td><%= list.get(i).getUserID() %></td>
-							<td><%= list.get(i).getBbsDate() %></td>
+							<td><%= notice.getNoticeID() %></td>
+							<td><a href="noticeView.jsp?noticeID=<%= notice.getNoticeID() %>">
+							<%= notice.getNoticeTitle() %></a></td>
+							<td><%= notice.getUserID() %></td>
+							<td><%= notice.getNoticeDate() %></td>
 						</tr>
 					<%
 						}
@@ -49,17 +52,17 @@
 			<%
 				if(pageNumber != 1) {
 			%>
-				<a href="bbs.jsp?pageNumber=<%=pageNumber - 1%>" class="btn btn-success btn-arrow-left">이전</a>
+				<a href="notice.jsp?pageNumber=<%=pageNumber - 1%>" class="btn btn-success btn-arrow-left">이전</a>
 			<%		
 				}
-				if(bbsDAO.nextPage(pageNumber + 1)) {
+				if(noticeDAO.nextPage(pageNumber + 1)) {
 			%>
-				<a href="bbs.jsp?pageNumber=<%=pageNumber + 1 %>" class="btn btn-success btn-arrow-left">다음</a>
+				<a href="notice.jsp?pageNumber=<%=pageNumber + 1 %>" class="btn btn-success btn-arrow-left">다음</a>
 			<%
 				}
 			%>
-			<!-- 글쓰기 버튼 생성 -->
-			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			
+			<a href="writeNotice.jsp" class="btn btn-primary pull-right">글쓰기</a>
 		</div>
 	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->

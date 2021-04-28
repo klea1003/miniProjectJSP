@@ -5,7 +5,7 @@
 <%@ page import="user.UserDAO" %>
 <!DOCTYPE html>
 <html>
-<jsp:include page="header.jsp" flush="false"/>
+<jsp:include page="/include/header.jsp" flush="false"/>
 <body>
 	<%
 		// 세션에 값이 담겨있는지 체크

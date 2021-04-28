@@ -74,7 +74,7 @@
 	margin-left:50px;
 	}
 </style>
-<jsp:include page="header.jsp" flush="false"/>
+<jsp:include page="/include/header.jsp" flush="false"/>
 </head>
 <body>
 	<% 
@@ -104,7 +104,7 @@
 	    		%>
 	    		<li style="text-align:center">
 	    			<p><h4><%= util.getCategoryName(i)%></h4></p>
-		    		<a href="product.jsp?bookID=<%= book.getBookID()%>"><img src="images/<%= book.getBookImagePath() %>.jpeg"></a>
+		    		<a href="product.jsp?bookID=<%= book.getBookID()%>"><img src="<%=request.getContextPath()%>/images/<%= book.getBookImagePath() %>.jpeg"></a>
 		    		<p><a href="product.jsp?bookID=<%= book.getBookID()%>"><%=book.getBookTitle() %></a></p>
 		        	<div class="line"></div>
 		        	<span class="number"><%=book.getBookPrice() %></span>

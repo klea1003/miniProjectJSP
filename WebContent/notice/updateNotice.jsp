@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
-<%@ page import="faq.Faq"%>
-<%@ page import="faq.FaqDAO"%>
+<%@ page import="notice.Notice"%>
+<%@ page import="notice.NoticeDAO"%>
 <!DOCTYPE html>
 <html>
-<jsp:include page="header.jsp" flush="false"/>
+<jsp:include page="/include/header.jsp" flush="false"/>
 <body>
 	<%
 		// 세션에 값이 담겨있는지 체크
@@ -20,24 +20,24 @@
 			script.println("location.href='login.jsp'");
 			script.println("</script>");
 		}
-		int faqID = 0;
-		if(request.getParameter("faqID") != null){
-			faqID = Integer.parseInt(request.getParameter("faqID"));
+		int noticeID = 0;
+		if(request.getParameter("noticeID") != null){
+			noticeID = Integer.parseInt(request.getParameter("noticeID"));
 		}
-		if(faqID == 0){
+		if(noticeID == 0){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('유효하지 않은 글입니다')");
-			script.println("location.href='faq.jsp'");
+			script.println("location.href='notice.jsp'");
 			script.println("</script>");
 		}
-		//해당 'faqID'에 대한 게시글을 가져온 다음 세션을 통하여 작성자 본인이 맞는지 체크한다
-		Faq faq = new FaqDAO().getFaq(faqID);
-		if(!userID.equals(faq.getUserID())){
+		//해당 'noticeID'에 대한 게시글을 가져온 다음 세션을 통하여 작성자 본인이 맞는지 체크한다
+		Notice notice = new NoticeDAO().getNotice(noticeID);
+		if(!userID.equals(notice.getUserID())){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('권한이 없습니다')");
-			script.println("location.href='faq.jsp'");
+			script.println("location.href='notice.jsp'");
 			script.println("</script>");
 		}
 	%>
@@ -45,7 +45,7 @@
 	<!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div class="row">
-			<form method="post" action="updateFaqAction.jsp?faqID=<%=faqID%>">
+			<form method="post" action="updateNoticeAction.jsp?noticeID=<%=noticeID%>">
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
@@ -56,10 +56,10 @@
 						<tr>
 							<!-- 테스트 코드 -->
 							<tr>
-								<td><input type="text" class="form-control" placeholder="글 제목" name="faqTitle" maxlength="50" value="<%=faq.getFaqTitle() %>"></td>
+								<td><input type="text" class="form-control" placeholder="글 제목" name="noticeTitle" maxlength="50" value="<%=notice.getNoticeTitle() %>"></td>
 							</tr>
 							<tr>
-								<td><textarea class="form-control" placeholder="글 내용" name="faqContent" maxlength="2048" style="height: 350px;"><%=faq.getFaqContent() %></textarea></td>
+								<td><textarea class="form-control" placeholder="글 내용" name="noticeContent" maxlength="2048" style="height: 350px;"><%=notice.getNoticeContent() %></textarea></td>
 							</tr>							
 						</tr>
 					</tbody>

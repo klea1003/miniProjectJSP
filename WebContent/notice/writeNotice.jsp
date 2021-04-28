@@ -3,7 +3,7 @@
 <%@ page import="java.io.PrintWriter"%>
 <!DOCTYPE html>
 <html>
-<jsp:include page="header.jsp" flush="false"/>
+<jsp:include page="/include/header.jsp" flush="false"/>
 <body>	
 	<!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">

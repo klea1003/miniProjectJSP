@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="notice.NoticeDAO"%>
-<%@ page import="notice.Notice"%>
+<%@ page import="faq.FaqDAO"%>
+<%@ page import="faq.Faq"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
 </head>
-<jsp:include page="header.jsp" flush="false"/>
+<jsp:include page="/include/header.jsp" flush="false"/>
 <body>
 	<%
 	int pageNumber = 1;
@@ -19,7 +19,7 @@
 	<!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div>
-	    	<p style="font-size:28px">공지사항</p>
+	    	<p style="font-size:28px">FAQ</p>
 	   	</div>
 		<div class="row">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
@@ -33,16 +33,16 @@
 				</thead>
 				<tbody>
 					<%
-						NoticeDAO noticeDAO = new NoticeDAO();
-						ArrayList<Notice> list = noticeDAO.getList(pageNumber);
-						for(Notice notice: list) {
+						FaqDAO faqDAO = new FaqDAO();
+						ArrayList<Faq> list = faqDAO.getList(pageNumber);
+						for(Faq faq: list) {
 					%>
 						<tr>
-							<td><%= notice.getNoticeID() %></td>
-							<td><a href="noticeView.jsp?noticeID=<%= notice.getNoticeID() %>">
-							<%= notice.getNoticeTitle() %></a></td>
-							<td><%= notice.getUserID() %></td>
-							<td><%= notice.getNoticeDate() %></td>
+							<td><%= faq.getFaqID() %></td>
+							<td><a href="faqView.jsp?faqID=<%= faq.getFaqID() %>">
+							<%= faq.getFaqTitle() %></a></td>
+							<td><%= faq.getUserID() %></td>
+							<td><%= faq.getFaqDate() %></td>
 						</tr>
 					<%
 						}
@@ -52,17 +52,17 @@
 			<%
 				if(pageNumber != 1) {
 			%>
-				<a href="notice.jsp?pageNumber=<%=pageNumber - 1%>" class="btn btn-success btn-arrow-left">이전</a>
+				<a href="faq.jsp?pageNumber=<%=pageNumber - 1%>" class="btn btn-success btn-arrow-left">이전</a>
 			<%		
 				}
-				if(noticeDAO.nextPage(pageNumber + 1)) {
+				if(faqDAO.nextPage(pageNumber + 1)) {
 			%>
-				<a href="notice.jsp?pageNumber=<%=pageNumber + 1 %>" class="btn btn-success btn-arrow-left">다음</a>
+				<a href="faq.jsp?pageNumber=<%=pageNumber + 1 %>" class="btn btn-success btn-arrow-left">다음</a>
 			<%
 				}
 			%>
 			
-			<a href="writeNotice.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			<a href="writeFaq.jsp" class="btn btn-primary pull-right">글쓰기</a>
 		</div>
 	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->

@@ -52,7 +52,7 @@ request.setCharacterEncoding("utf-8");
 			session.setAttribute("userID", user.getUserID());
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("location.href = 'MainCategoryView.jsp'");
+			script.println("location.href = '../product/MainCategoryView.jsp'");
 			script.println("</script>");
 		}
 	}

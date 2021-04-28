@@ -77,7 +77,7 @@
 		margin-left:0;
 	}
 </style>
-<jsp:include page="header.jsp" flush="false"/>
+<jsp:include page="/include/header.jsp" flush="false"/>
 </head>
 <body>
 	<% 
@@ -123,7 +123,7 @@
 	    		for(int i=0; i<list.size(); i++) {
 	    	%>
 	    		<%Book book = list.get(i); %>
-	    		<li class="item"><a href="product.jsp?bookID=<%= book.getBookID()%>"><img src="images/<%= book.getBookImagePath() %>.jpeg"></a>
+	    		<li class="item"><a href="product.jsp?bookID=<%= book.getBookID()%>"><img src="<%=request.getContextPath()%>/images/<%= book.getBookImagePath() %>.jpeg"></a>
 	    		<span><a href="product.jsp?bookID=<%= book.getBookID()%>"><%=book.getBookTitle() %></a></span>
 	        	<span class="line"></span><br><span class="number"><%=book.getBookPrice() %></span></li>
 	    	<%

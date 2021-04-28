@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<jsp:include page="header.jsp" flush="false"/>
+<jsp:include page="/include/header.jsp" flush="false"/>
 <body>	
 	<!-- 로그인 양식 -->
 	<div class="container">		<!-- 하나의 영역 생성 -->

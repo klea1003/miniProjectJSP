@@ -32,7 +32,7 @@
 <!-- 화면 최적화 -->
 <meta name="viewport" content="width-device-width" , initial-scale="1">
 <!-- 루트 폴더에 부트스트랩을 참조하는 링크 -->
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.css">
 <title>인디북</title>
 	<%
 		String userID = null;
@@ -56,7 +56,7 @@
 				<span class="icon-bar"></span>
 			</button>
 			<!-- 상단 바에 제목이 나타나고 클릭하면 main 페이지로 이동한다 -->
-			<a class="navbar-brand" href="MainCategoryView.jsp">INDIEBOOK</a>
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/product/MainCategoryView.jsp">INDIEBOOK</a>
 		</div>
 		<!-- 게시판 제목 이름 옆에 나타나는 메뉴 영역 -->
 		<div class="collapse navbar-collapse"
@@ -67,8 +67,8 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">고객센터<span class="caret"></span></a> <!-- 드랍다운 아이템 영역 -->
 					<ul class="dropdown-menu">
-						<li><a href="notice.jsp">공지사항</a></li>
-						<li><a href="faq.jsp">FAQ</a></li>
+						<li><a href="<%=request.getContextPath()%>/notice/notice.jsp">공지사항</a></li>
+						<li><a href="<%=request.getContextPath()%>/faq/faq.jsp">FAQ</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -78,8 +78,8 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">마이페이지<span class="caret"></span></a> <!-- 드랍다운 아이템 영역 -->
 					<ul class="dropdown-menu">
-						<li><a href="cart.jsp">장바구니</a></li>
-						<li><a href="updateUser.jsp">정보수정</a></li>
+						<li><a href="<%=request.getContextPath()%>/cart/cart.jsp">장바구니</a></li>
+						<li><a href="<%=request.getContextPath()%>/user/updateUser.jsp">정보수정</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -88,14 +88,14 @@
 		if(userID == null) {
 	%>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="login.jsp">로그인</a></li>
-				<li><a href="join.jsp">회원가입</a></li>
+				<li><a href="<%=request.getContextPath()%>/user/login.jsp">로그인</a></li>
+				<li><a href="<%=request.getContextPath()%>/user/join.jsp">회원가입</a></li>
 			</ul>
 	<%
 		} else {
 	%>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="logoutAction.jsp">로그아웃</a></li>
+				<li><a href="<%=request.getContextPath()%>/user/logoutAction.jsp">로그아웃</a></li>
 			</ul>
 			
 			<ul class="nav navbar-nav navbar-right">
@@ -113,19 +113,19 @@
 
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+	<script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
 </head>
 
 <div class="fix1">
 <aside class="side">
 	<div>
 		<ul>
-			<li class="inaside" style="border:1px solid black; font-family:굴림; font-weight:700 " ><a href="MainCategoryView.jsp">장르별 베스트 셀러</a></li>
+			<li class="inaside" style="border:1px solid black; font-family:굴림; font-weight:700 " ><a href="<%=request.getContextPath()%>/product/MainCategoryView.jsp">장르별 베스트 셀러</a></li>
 			<% 
 				for(int i=0; i<util.getCategoryLength(); i++){
 			%>
 				<li class="inaside" style="border:1px solid black; font-family:굴림; font-weight:700 ">				
-					<a href="categoryView.jsp?categoryNumber=<%= i%>"><%= util.getCategoryName(i)%></a>				
+					<a href="<%=request.getContextPath()%>/product/categoryView.jsp?categoryNumber=<%= i%>"><%= util.getCategoryName(i)%></a>				
 				</li>
 
 			<%

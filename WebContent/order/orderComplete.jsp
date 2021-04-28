@@ -8,7 +8,7 @@
 <html>
 <head>
 </head>
-<jsp:include page="header.jsp" flush="false"/>
+<jsp:include page="/include/header.jsp" flush="false"/>
 <body>
 	<%
 		// 현재 세션 상태를 체크한다

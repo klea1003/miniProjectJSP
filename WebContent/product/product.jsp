@@ -46,7 +46,7 @@
 		height: 30px;
 	}
 </style>
-<jsp:include page="header.jsp" flush="false"/>
+<jsp:include page="/include/header.jsp" flush="false"/>
 </head>
 <body>
 	<%
@@ -69,7 +69,7 @@
 		
 	%>
 	<div>
-		<div class="left"><img src="images/<%= book.getBookImagePath() %>.jpeg"></div>  
+		<div class="left"><img src="<%=request.getContextPath()%>/images/<%= book.getBookImagePath() %>.jpeg"></div>  
 		<form class="info" method="post" action="cartAction.jsp">
 			<input type="hidden" name="bookID" value=<%= bookID %>>
 			<div class="line1"></div>

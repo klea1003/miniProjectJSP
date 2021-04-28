@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
-<%@ page import="bbs.Bbs"%>
-<%@ page import="bbs.BbsDAO"%>
+<%@ page import="faq.Faq"%>
+<%@ page import="faq.FaqDAO"%>
 <!DOCTYPE html>
 <html>
-<jsp:include page="header.jsp" flush="false"/>
+<jsp:include page="/include/header.jsp" flush="false"/>
 <body>
 	<%
 		// 세션에 값이 담겨있는지 체크
@@ -20,24 +20,24 @@
 			script.println("location.href='login.jsp'");
 			script.println("</script>");
 		}
-		int bbsID = 0;
-		if(request.getParameter("bbsID") != null){
-			bbsID = Integer.parseInt(request.getParameter("bbsID"));
+		int faqID = 0;
+		if(request.getParameter("faqID") != null){
+			faqID = Integer.parseInt(request.getParameter("faqID"));
 		}
-		if(bbsID == 0){
+		if(faqID == 0){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('유효하지 않은 글입니다')");
-			script.println("location.href='bbs.jsp'");
+			script.println("location.href='faq.jsp'");
 			script.println("</script>");
 		}
-		//해당 'bbsID'에 대한 게시글을 가져온 다음 세션을 통하여 작성자 본인이 맞는지 체크한다
-		Bbs bbs = new BbsDAO().getBbs(bbsID);
-		if(!userID.equals(bbs.getUserID())){
+		//해당 'faqID'에 대한 게시글을 가져온 다음 세션을 통하여 작성자 본인이 맞는지 체크한다
+		Faq faq = new FaqDAO().getFaq(faqID);
+		if(!userID.equals(faq.getUserID())){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('권한이 없습니다')");
-			script.println("location.href='bbs.jsp'");
+			script.println("location.href='faq.jsp'");
 			script.println("</script>");
 		}
 	%>
@@ -45,7 +45,7 @@
 	<!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div class="row">
-			<form method="post" action="updateAction.jsp?bbsID=<%=bbsID%>">
+			<form method="post" action="updateFaqAction.jsp?faqID=<%=faqID%>">
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
@@ -56,10 +56,10 @@
 						<tr>
 							<!-- 테스트 코드 -->
 							<tr>
-								<td><input type="text" class="form-control" placeholder="글 제목" name="bbsTitle" maxlength="50" value="<%=bbs.getBbsTitle() %>"></td>
+								<td><input type="text" class="form-control" placeholder="글 제목" name="faqTitle" maxlength="50" value="<%=faq.getFaqTitle() %>"></td>
 							</tr>
 							<tr>
-								<td><textarea class="form-control" placeholder="글 내용" name="bbsContent" maxlength="2048" style="height: 350px;"><%=bbs.getBbsContent() %></textarea></td>
+								<td><textarea class="form-control" placeholder="글 내용" name="faqContent" maxlength="2048" style="height: 350px;"><%=faq.getFaqContent() %></textarea></td>
 							</tr>							
 						</tr>
 					</tbody>
