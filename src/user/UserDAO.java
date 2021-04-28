@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.naming.InitialContext;
+import javax.naming.Context;
+import javax.sql.DataSource;
+
 public class UserDAO {
 
 	private Connection conn;
@@ -13,12 +17,9 @@ public class UserDAO {
 
 	public UserDAO() {
 		try {
-			String dbURL = "jdbc:oracle:thin:@localhost:1521:xe";
-			String dbID = "c##mini";
-			String dbPassword = "1234";
-
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			Context init = new InitialContext();
+			DataSource ds = (DataSource) init.lookup("java:/comp/env/OracleDB");
+			conn = ds.getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

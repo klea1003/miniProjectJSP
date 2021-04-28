@@ -6,6 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.naming.InitialContext;
+import javax.naming.Context;
+import javax.sql.DataSource;
+
 public class NoticeDAO {
 
 	private Connection conn;
@@ -14,12 +18,9 @@ public class NoticeDAO {
 
 	public NoticeDAO() {
 		try {
-			String dbURL = "jdbc:oracle:thin:@klea-home.iptime.org:1521:xe";
-			String dbID = "c##mini";
-			String dbPassword = "1234";
-
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			Context init = new InitialContext();
+			DataSource ds = (DataSource) init.lookup("java:/comp/env/OracleDB");
+			conn = ds.getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
