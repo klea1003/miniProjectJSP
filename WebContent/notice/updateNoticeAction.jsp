@@ -45,7 +45,7 @@
 		UserDAO userDAO = new UserDAO();
 		User user = userDAO.getUser(userID);
 		int admin = user.getAdmin();
-		if(!userID.equals(notice.getUserID()) | admin != 1){
+		if(!userID.equals(notice.getUserID()) || admin == 0){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('권한이 없습니다')");

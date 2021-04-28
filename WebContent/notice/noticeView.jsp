@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
+<%@ page import="user.User" %>
+<%@ page import="user.UserDAO" %>
 <%@ page import="notice.Notice"%>
 <%@ page import="notice.NoticeDAO"%>
 <!DOCTYPE html>
@@ -12,6 +14,10 @@
 	if (session.getAttribute("userID") != null) {
 		userID = (String) session.getAttribute("userID");
 	}
+	
+	UserDAO userDAO = new UserDAO();
+	User user = userDAO.getUser(userID);
+	int admin = user.getAdmin();
 
 	int noticeID = 0;
 	if(request.getParameter("noticeID") != null) {
@@ -64,7 +70,7 @@
 			
 			<!-- 해당 글의 작성자가 본인이라면 수정과 삭제가 가능하도록 코드 추가 -->
 			<%
-				if(userID != null && userID.equals(notice.getUserID())){
+				if(userID != null && userID.equals(notice.getUserID()) && admin == 1){
 			%>
 					<a href="updateNotice.jsp?noticeID=<%= noticeID %>" class="btn btn-primary">수정</a>
 					<a onclick="return confirm('정말로 삭제하시겠습니까?')" href=

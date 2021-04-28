@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
+<%@ page import="user.User" %>
+<%@ page import="user.UserDAO" %>
 <%@ page import="faq.Faq"%>
 <%@ page import="faq.FaqDAO"%>
 <!DOCTYPE html>
@@ -12,6 +14,11 @@
 	if (session.getAttribute("userID") != null) {
 		userID = (String) session.getAttribute("userID");
 	}
+	
+	UserDAO userDAO = new UserDAO();
+	User user = userDAO.getUser(userID);
+	int admin = user.getAdmin();
+	
 	// bbsID를 초기화 시키고
 	// bbsID라는 데이터가 넘어온 것이 존재한다면 캐스팅을 하여 변수에 담는다.
 	int faqID = 0;
@@ -65,7 +72,7 @@
 			
 			<!-- 해당 글의 작성자가 본인이라면 수정과 삭제가 가능하도록 코드 추가 -->
 			<%
-				if(userID != null && userID.equals(faq.getUserID())){
+				if(userID != null && userID.equals(faq.getUserID()) && admin == 1){
 			%>
 					<a href="updateFaq.jsp?faqID=<%= faqID %>" class="btn btn-primary">수정</a>
 					<a onclick="return confirm('정말로 삭제하시겠습니까?')" href=

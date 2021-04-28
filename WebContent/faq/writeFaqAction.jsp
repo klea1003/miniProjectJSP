@@ -1,4 +1,6 @@
 <%@page import="java.io.PrintWriter"%>
+<%@ page import="user.User" %>
+<%@ page import="user.UserDAO" %>
 <%@page import="faq.FaqDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -35,6 +37,18 @@
 				script.println("history.back()");
 				script.println("</script>");
 			}else{
+				UserDAO userDAO = new UserDAO();
+				User user = userDAO.getUser(userID);
+				int admin = user.getAdmin();
+				
+				if(admin == 0){
+					PrintWriter script = response.getWriter();
+					script.println("<script>");
+					script.println("alert('권한이 없습니다')");
+					script.println("location.href='faq.jsp'");
+					script.println("</script>");
+				}
+				
 				// 정상적으로 입력이 되었다면 글쓰기 로직을 수행한다
 				FaqDAO faqDAO = new FaqDAO();
 				int result = faqDAO.write(faq.getFaqTitle(), userID, faq.getFaqContent());
