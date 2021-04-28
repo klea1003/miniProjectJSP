@@ -1,0 +1,26 @@
+product.jsp
+
+line 90, 95
+error : 수량을 number type으로 바꾼 후 장바구나 담기하면 장바구니에 목록 반영이 되지 않음.
+-------------------
+join.jsp
+
+line 6, 20, 50
+------------------
+login.jsp
+
+line 7, 17, 32
+------------------
+index.jsp
+
+line 14
+------------------
+updateUser.jsp
+
+line 10, 40, 42, 44, 38, 80, 83
+error: 정보 수정 누른 후 호출되어야할 cartAction.jsp에 대해 404 에러
+------------------
+notice.jsp
+
+line 9, 31, 50,
+error: 화면 크기 축소 시 테이블의 크기도 줄어듬
