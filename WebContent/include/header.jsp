@@ -16,7 +16,7 @@
 	width: 11%;
 	height: 85%;
 	/* background: #80cbc4; */
-	background: linear-gradient( to right, #80cbc4, #FFFFFF );
+	background:  #80cbc4, #FFFFFF ;
 	color: white;
 	float: left;
 }

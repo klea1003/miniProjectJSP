@@ -1,4 +1,6 @@
 <%@page import="java.io.PrintWriter"%>
+<%@ page import="user.User" %>
+<%@ page import="user.UserDAO" %>
 <%@page import="notice.NoticeDAO"%>
 <%@page import="notice.Notice"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -40,7 +42,10 @@
 		
 		//해당 'noticeID'에 대한 게시글을 가져온 다음 세션을 통하여 작성자 본인이 맞는지 체크한다
 		Notice notice = new NoticeDAO().getNotice(noticeID);
-		if(!userID.equals(notice.getUserID())){
+		UserDAO userDAO = new UserDAO();
+		User user = userDAO.getUser(userID);
+		int admin = user.getAdmin();
+		if(!userID.equals(notice.getUserID()) | admin != 1){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('권한이 없습니다')");

@@ -66,9 +66,9 @@
 			<%
 				if(userID != null && userID.equals(notice.getUserID())){
 			%>
-					<a href="updateNotice.jsp?bbsID=<%= noticeID %>" class="btn btn-primary">수정</a>
+					<a href="updateNotice.jsp?noticeID=<%= noticeID %>" class="btn btn-primary">수정</a>
 					<a onclick="return confirm('정말로 삭제하시겠습니까?')" href=
-						"deleteNoticeAction.jsp?bbsID=<%= noticeID %>" class="btn btn-primary">삭제</a>
+						"deleteNoticeAction.jsp?noticeID=<%= noticeID %>" class="btn btn-primary">삭제</a>
 			<%
 				}
 			%>

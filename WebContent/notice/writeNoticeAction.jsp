@@ -1,4 +1,6 @@
 <%@page import="java.io.PrintWriter"%>
+<%@ page import="user.User" %>
+<%@ page import="user.UserDAO" %>
 <%@page import="notice.NoticeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -24,9 +26,21 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('로그인을 하세요')");
-			script.println("location.href='login.jsp'");
+			script.println("location.href='../user/login.jsp'");
 			script.println("</script>");
 		}else{
+			UserDAO userDAO = new UserDAO();
+			User user = userDAO.getUser(userID);
+			int admin = user.getAdmin();
+			
+			if(admin != 1){
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('권한이 없습니다')");
+				script.println("location.href='notice.jsp'");
+				script.println("</script>");
+			}
+			
 			// 입력이 안 된 부분이 있는지 체크한다
 			if(notice.getNoticeTitle() == null || notice.getNoticeContent() == null){
 				PrintWriter script = response.getWriter();
