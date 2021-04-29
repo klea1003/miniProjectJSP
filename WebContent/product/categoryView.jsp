@@ -115,7 +115,8 @@
 			<a href="categoryView.jsp?categoryNumber=<%=categoryNumber%>&pageNumber=<%=pageNumber - 1%>" class="btn btn-success btn-arrow-left">이전</a>
 		<%		
 			}
-			if(bookDAO.nextPage(categoryNumber, pageNumber + 1)) {
+			BookDAO bookDAOTemp = new BookDAO();
+			if(bookDAOTemp.nextPage(categoryNumber, pageNumber + 1)) {
 		%>
 			<a href="categoryView.jsp?categoryNumber=<%=categoryNumber%>&pageNumber=<%=pageNumber + 1 %>" class="btn btn-success btn-arrow-left">다음</a>
 		<%

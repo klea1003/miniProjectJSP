@@ -49,8 +49,6 @@ public class BookDAO {
 				return null;
 			} catch (Exception e) {
 				e.printStackTrace();
-			} finally {
-				JdbcUtil.close(conn, pstmt, rs);				
 			}
 			return null;
 		}
@@ -96,6 +94,8 @@ public class BookDAO {
 			}		
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return list; // 전체 책 리스트 반환
 	}
@@ -113,9 +113,9 @@ public class BookDAO {
 			}			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return false;
 	}
-	
-	
 }
