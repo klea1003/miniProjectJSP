@@ -34,8 +34,10 @@ public class NoticeDAO {
 			if(rs.next()) {
 				return rs.getString(1);
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return ""; //데이터베이스 오류
 	}
@@ -52,8 +54,10 @@ public class NoticeDAO {
 			pstmt.setString(5, noticeContent);
 			pstmt.setInt(6, 1); //글의 유효번호
 			return pstmt.executeUpdate();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return -1; //데이터베이스 오류
 	}
@@ -69,8 +73,10 @@ public class NoticeDAO {
 				return rs.getInt(1) + 1;
 			}
 			return 1; //첫 번째 게시물인 경우
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return -1; //데이터베이스 오류
 	}
@@ -94,8 +100,10 @@ public class NoticeDAO {
 				list.add(notice);
 			}
 			
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return list; // 전체 게시물 반환
 	}
@@ -109,8 +117,10 @@ public class NoticeDAO {
 			if(rs.next()) {
 				return true;
 			}			
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return false;
 	}
@@ -132,8 +142,10 @@ public class NoticeDAO {
 				notice.setNoticeAvailable(rs.getInt(6));
 				return notice;
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return null;
 	}
@@ -147,8 +159,10 @@ public class NoticeDAO {
 			pstmt.setString(2, noticeContent);
 			pstmt.setInt(3, noticeID);
 			return pstmt.executeUpdate();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return -1; //데이터베이스 오류
 	}
@@ -161,9 +175,18 @@ public class NoticeDAO {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, noticeID);
 			return pstmt.executeUpdate();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return -1; //데이터베이스 오류 
+	}
+	
+	public void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
+		try {
+			pstmt.close(); rs.close(); conn.close();
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

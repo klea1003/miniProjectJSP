@@ -45,8 +45,10 @@ public class BookDAO {
 					return book;
 				}
 				return null;
-			}catch (Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				close(conn, pstmt, rs);	
 			}
 			return null;
 		}
@@ -62,8 +64,10 @@ public class BookDAO {
 				return rs.getInt(1) + 1;
 			}
 			return 1; //첫 번째 책일 경우
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return -1; //데이터베이스 오류
 	}
@@ -89,17 +93,18 @@ public class BookDAO {
 				book.setBookImagePath(rs.getString(7));				
 				
 				list.add(book);
-			}
-			
-		}catch (Exception e) {
+			}		
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return list; // 전체 책 리스트 반환
 	}
 	
 	public boolean nextPage(int category, int pageNumber) {
 		String SQL = "SELECT * from BOOK WHERE BOOKCATEGORY = ? AND bookID < ?";
-		ArrayList<Faq> list = new ArrayList<Faq>();
+		ArrayList<Book> list = new ArrayList<Book>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, category);
@@ -108,9 +113,20 @@ public class BookDAO {
 			if(rs.next()) {
 				return true;
 			}			
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return false;
+	}
+	
+	public void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
+		try {
+			pstmt.close(); rs.close(); conn.close();
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

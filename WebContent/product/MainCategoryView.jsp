@@ -88,7 +88,7 @@
 	    		for(int i=0; i<util.getCategoryLength(); i++){
 	    	%>
 	    		<%
-	    			ArrayList<Book> list = bookDAO.getList(i);
+	    			ArrayList<Book> list = bookDAO.getList(i, 1);
 	    			Book book = list.get(0);
 	    		%>
 	    		<li style="text-align:center">

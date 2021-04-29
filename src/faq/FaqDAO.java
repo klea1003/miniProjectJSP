@@ -23,7 +23,7 @@ public class FaqDAO {
 			conn = ds.getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} 
 	}
 	
 	public String getDate() {
@@ -36,6 +36,8 @@ public class FaqDAO {
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return ""; //데이터베이스 오류
 	}
@@ -54,6 +56,8 @@ public class FaqDAO {
 			return pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return -1; //데이터베이스 오류
 	}
@@ -71,6 +75,8 @@ public class FaqDAO {
 			return 1; //첫 번째 게시물인 경우
 		}catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return -1; //데이터베이스 오류
 	}
@@ -96,6 +102,8 @@ public class FaqDAO {
 			
 		}catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return list; // 전체 게시물 반환
 	}
@@ -112,6 +120,8 @@ public class FaqDAO {
 			}			
 		}catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return false;
 	}
@@ -135,6 +145,8 @@ public class FaqDAO {
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return null;
 	}
@@ -150,6 +162,8 @@ public class FaqDAO {
 			return pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return -1; //데이터베이스 오류
 	}
@@ -164,7 +178,18 @@ public class FaqDAO {
 			return pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);	
 		}
 		return -1; //데이터베이스 오류 
+	}
+	
+	public void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
+		try {
+			pstmt.close(); rs.close(); conn.close();
+	
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
