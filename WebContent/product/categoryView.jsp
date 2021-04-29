@@ -80,9 +80,6 @@
 		if (request.getParameter("pageNumber") != null) {
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
-		
-		System.out.println("cateogyNumer " + categoryNumber);
-		System.out.println("pageNumber " + pageNumber);
 	
 		BookDAO bookDAO = new BookDAO();
 		ArrayList<Book> list = bookDAO.getList(categoryNumber, pageNumber);		

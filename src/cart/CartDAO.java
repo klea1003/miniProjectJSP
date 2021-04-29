@@ -1,5 +1,7 @@
 package cart;
 
+import jdbc.JdbcUtil;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -37,8 +39,6 @@ public class CartDAO {
 			return 1; // 첫 번째 게시물인 경우
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			close(conn, pstmt, rs);
 		}
 		return -1; // 데이터베이스 오류
 	}
@@ -53,8 +53,6 @@ public class CartDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			close(conn, pstmt, rs);
 		}
 		return ""; // 데이터베이스 오류
 	}
@@ -72,7 +70,7 @@ public class CartDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(conn, pstmt, rs);
+			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return -1; // 데이터베이스 오류
 	}
@@ -98,7 +96,7 @@ public class CartDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(conn, pstmt, rs);
+			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return list;
 	}
@@ -127,7 +125,7 @@ public class CartDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(conn, pstmt, rs);
+			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return list;
 	}
@@ -143,7 +141,7 @@ public class CartDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(conn, pstmt, rs);
+			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return -1; // 데이터베이스 오류
 	}
@@ -159,20 +157,9 @@ public class CartDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(conn, pstmt, rs);
+			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return -1; // 데이터베이스 오류
-	}
-
-	public void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
-		try {
-			pstmt.close();
-			rs.close();
-			conn.close();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 }

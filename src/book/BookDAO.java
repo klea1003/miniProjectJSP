@@ -1,5 +1,7 @@
 package book;
 
+import jdbc.JdbcUtil;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -48,7 +50,7 @@ public class BookDAO {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
-				close(conn, pstmt, rs);	
+				JdbcUtil.close(conn, pstmt, rs);				
 			}
 			return null;
 		}
@@ -66,8 +68,6 @@ public class BookDAO {
 			return 1; //첫 번째 책일 경우
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			close(conn, pstmt, rs);	
 		}
 		return -1; //데이터베이스 오류
 	}
@@ -96,8 +96,6 @@ public class BookDAO {
 			}		
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			close(conn, pstmt, rs);	
 		}
 		return list; // 전체 책 리스트 반환
 	}
@@ -115,18 +113,9 @@ public class BookDAO {
 			}			
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			close(conn, pstmt, rs);	
 		}
 		return false;
 	}
 	
-	public void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
-		try {
-			pstmt.close(); rs.close(); conn.close();
 	
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }
