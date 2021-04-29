@@ -84,16 +84,36 @@ body {
 				</li>
 			</ul>
 			
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">마이페이지<span class="caret"></span></a> <!-- 드랍다운 아이템 영역 -->
-					<ul class="dropdown-menu">
-						<li><a href="<%=request.getContextPath()%>/cart/cart.jsp">장바구니</a></li>
-						<li><a href="<%=request.getContextPath()%>/user/updateUser.jsp">정보수정</a></li>
+			<%
+				if(userID == null) {
+			%>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="<%=request.getContextPath()%>/user/join.jsp">회원가입</a></li>
 					</ul>
-				</li>
-			</ul>	
+					
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">로그인<span class="caret"></span></a> <!-- 드랍다운 아이템 영역 -->
+							<ul class="dropdown-menu">
+								<li><a href="<%=request.getContextPath()%>/user/login.jsp">로그인</a></li>
+								<li><a href="<%=request.getContextPath()%>/user/Adminlogin.jsp">관리자 로그인</a></li>
+							</ul>
+						</li>
+					</ul>
+			<%
+				} else {
+			%>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="<%=request.getContextPath()%>/user/logoutAction.jsp">로그아웃</a></li>
+					</ul>
+					
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#"><%= userID %> 님 환영합니다</a></li>
+					</ul>
+			<%
+				}
+			%>
 		</div>
 	</header>
 	
