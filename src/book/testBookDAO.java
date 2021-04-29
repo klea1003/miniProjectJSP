@@ -8,7 +8,7 @@ public class testBookDAO {
 
 		BookDAO bookDAO = new BookDAO();
 		
-		ArrayList<Book> list = bookDAO.getList(0);
+		ArrayList<Book> list = bookDAO.getList(0, 0);
 		
 		for(int i=0; i<list.size(); i++) {
 			System.out.println(list.get(i));

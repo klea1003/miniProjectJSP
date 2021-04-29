@@ -61,7 +61,6 @@
 		<!-- 게시판 제목 이름 옆에 나타나는 메뉴 영역 -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
-			
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -88,8 +87,18 @@
 		if(userID == null) {
 	%>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="<%=request.getContextPath()%>/user/login.jsp">로그인</a></li>
 				<li><a href="<%=request.getContextPath()%>/user/join.jsp">회원가입</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">로그인<span class="caret"></span></a> <!-- 드랍다운 아이템 영역 -->
+					<ul class="dropdown-menu">
+						<li><a href="<%=request.getContextPath()%>/user/login.jsp">로그인</a></li>
+						<li><a href="<%=request.getContextPath()%>/user/Adminlogin.jsp">관리자 로그인</a></li>
+					</ul>
+				</li>
 			</ul>
 	<%
 		} else {
@@ -125,7 +134,7 @@
 				for(int i=0; i<util.getCategoryLength(); i++){
 			%>
 				<li class="inaside" style=" font-family:굴림; font-weight:700 ">				
-					<a href="<%=request.getContextPath()%>/product/categoryView.jsp?categoryNumber=<%= i%>"><%= util.getCategoryName(i)%></a>				
+					<a href="<%=request.getContextPath()%>/product/categoryView.jsp?categoryNumber=<%=i%>&pageNumber=1"><%= util.getCategoryName(i)%></a>				
 				</li>
 
 			<%

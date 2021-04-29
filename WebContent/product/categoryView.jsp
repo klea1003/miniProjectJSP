@@ -75,9 +75,17 @@
 		if (request.getParameter("categoryNumber") != null) {
 			categoryNumber = Integer.parseInt(request.getParameter("categoryNumber"));
 		}
+		
+		int pageNumber = 1;
+		if (request.getParameter("pageNumber") != null) {
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		}
+		
+		System.out.println("cateogyNumer " + categoryNumber);
+		System.out.println("pageNumber " + pageNumber);
 	
 		BookDAO bookDAO = new BookDAO();
-		ArrayList<Book> list = bookDAO.getList(categoryNumber);		
+		ArrayList<Book> list = bookDAO.getList(categoryNumber, pageNumber);		
 		Util util = new Util();
 	%>
 
@@ -101,6 +109,21 @@
 	    		}
 	    	%>
 	    </ul>
+	</div>
+	
+	<div>
+		<%
+			if(pageNumber != 1) {
+		%>
+			<a href="categoryView.jsp?categoryNumber=<%=categoryNumber%>&pageNumber=<%=pageNumber - 1%>" class="btn btn-success btn-arrow-left">이전</a>
+		<%		
+			}
+			if(bookDAO.nextPage(categoryNumber, pageNumber + 1)) {
+		%>
+			<a href="categoryView.jsp?categoryNumber=<%=categoryNumber%>&pageNumber=<%=pageNumber + 1 %>" class="btn btn-success btn-arrow-left">다음</a>
+		<%
+			}
+		%>
 	</div>
 </body>
 </html>
