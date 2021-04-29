@@ -100,6 +100,8 @@
 	        	</li>
 	    	<%
 	    		}
+	    	
+	    	bookDAO.close();
 	    	%>
 	    </ul>
 	</div>

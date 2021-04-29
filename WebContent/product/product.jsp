@@ -10,12 +10,12 @@
 <!-- Product Style sheet -->
 <style type="text/css">
 	.left {
-		width:40%;
+		width:30%;
 	    float:left;
 	    text-align: center;
 	}
 	.info {
-		width:40%;
+		width:30%;
 		margin:20px;
 	    float:right;
 	}

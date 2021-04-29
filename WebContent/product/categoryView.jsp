@@ -16,23 +16,25 @@
 	    padding:0;
 	}
 	
+	body {
+		width: 1200px;
+		margin: 0 auto;
+	}
+	
 	#div-box1{
-	    /* width: 90%; */
 	    width:90%;
-	    margin:20px auto 0 auto;
 	    text-align: center;
+	    float: center;
 	}
 	#div-box1 .faceul{
-	    width: 85%;   
-	    height: 550px;
+	    height: 1000px;
 	    /*Make ul automatically center horizontally*/
-	    margin:20px auto 0 auto;
 	}
 	#div-box1 li{
 	    /*Remove the style in front of li*/
 	    list-style-type:none;
 	    width: 200px;
-	    height: 260px;    
+	    height: 300px;    
 	    /* border:1px solid red; */
 	    /*To put li in a row, use left and left float*/
 	    float:left; 
@@ -52,6 +54,10 @@
 	    color:red;
 	    text-decoration:underline;
 	}
+	.text_box{
+		margin:10px 25px 10px 25px; 
+		height:30px;
+	}
 	.line{
 		width: 200px;
 		border-bottom: 1px solid #e0e0e0;
@@ -65,6 +71,15 @@
 	#div-box2{
 	    width: 72%;
 	    margin:20px auto 0 auto;
+	}
+	.page_box{
+		display:block;
+		text-align: center;
+	}
+	.page_box a{
+	    color:black;
+	    text-decoration:none;
+	    
 	}
 </style>
 <jsp:include page="/include/header.jsp" flush="false"/>
@@ -86,7 +101,7 @@
 		Util util = new Util();
 	%>
 
-	<div id="div-box2">
+	<div>
     	<p style="font-size:28px"><%= util.getCategoryName(categoryNumber) %></p>
    	</div>
 
@@ -100,7 +115,9 @@
 	    	%>
 	    		<%Book book = list.get(i); %>
 	    		<li class="item"><a href="product.jsp?bookID=<%= book.getBookID()%>"><img src="<%=request.getContextPath()%>/images/<%= book.getBookImagePath() %>.jpeg"></a>
-	    		<span><a href="product.jsp?bookID=<%= book.getBookID()%>"><%=book.getBookTitle() %></a></span>
+	    		
+	    		<span class="text_box"><a href="product.jsp?bookID=<%= book.getBookID()%>"><%=book.getBookTitle() %></a></span>
+	        	
 	        	<span class="line"></span><br><span class="number"><%=book.getBookPrice() %></span></li>
 	    	<%
 	    		}
@@ -108,19 +125,20 @@
 	    </ul>
 	</div>
 	
-	<div>
-		<%
-			if(pageNumber != 1) {
+	<div class="page_box">
+		<% 
+			int numPage = 1;
+			while (true) {
+				
+				if(bookDAO.nextPage(categoryNumber, numPage) == false)
+					break;
 		%>
-			<a href="categoryView.jsp?categoryNumber=<%=categoryNumber%>&pageNumber=<%=pageNumber - 1%>" class="btn btn-success btn-arrow-left">이전</a>
-		<%		
+				<a href="categoryView.jsp?categoryNumber=<%=categoryNumber%>&pageNumber=<%=numPage%>" class="btn btn-default"><%=numPage%></a>
+		<%			
+				numPage += 1;				
 			}
-			BookDAO bookDAOTemp = new BookDAO();
-			if(bookDAOTemp.nextPage(categoryNumber, pageNumber + 1)) {
-		%>
-			<a href="categoryView.jsp?categoryNumber=<%=categoryNumber%>&pageNumber=<%=pageNumber + 1 %>" class="btn btn-success btn-arrow-left">다음</a>
-		<%
-			}
+			
+			bookDAO.close();
 		%>
 	</div>
 </body>
