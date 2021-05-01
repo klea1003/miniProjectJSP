@@ -29,17 +29,14 @@
 	if(session.getAttribute("userID") != null){
 		userID = (String)session.getAttribute("userID");
 	}
-	if(userID == null){
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("alert('로그인을 하세요')");
-		script.println("location.href='../user/login.jsp'");
-		script.println("</script>");
-	}
 	
-	UserDAO userDAO = new UserDAO();
-	User user = userDAO.getUser(userID);
-	int admin = user.getAdmin();
+	UserDAO userDAO = new UserDAO();	
+	User user = null;
+	int admin = 0;
+	if (userID != null) {
+		user = userDAO.getUser(userID);
+		admin = user.getAdmin();
+	}
 	%>
 	
 	<!-- 게시판 메인 페이지 영역 시작 -->
@@ -93,6 +90,7 @@
 				<a href="writeFaq.jsp" class="btn btn-primary pull-right">글쓰기</a>
 			<%
 				}
+			faqDAO.close();
 			%>			
 			
 		</div>

@@ -24,8 +24,12 @@
 	}
 	
 	UserDAO userDAO = new UserDAO();
-	User user = userDAO.getUser(userID);
-	int admin = user.getAdmin();
+	User user = null;
+	int admin = 0;
+	if(userID != null){
+		user = userDAO.getUser(userID);
+		admin = user.getAdmin();		
+	}	
 	
 	// bbsID를 초기화 시키고
 	// bbsID라는 데이터가 넘어온 것이 존재한다면 캐스팅을 하여 변수에 담는다.
@@ -42,7 +46,8 @@
 		script.println("</script>");
 	}
 	
-	Faq faq = new FaqDAO().getFaq(faqID);
+	FaqDAO faqDAO = new FaqDAO();
+	Faq faq = faqDAO.getFaq(faqID);
 	%>
 	
 	<!-- 게시판 메인 페이지 영역 시작 -->
@@ -87,6 +92,7 @@
 						"deleteFaqAction.jsp?faqID=<%= faqID %>" class="btn btn-primary">삭제</a>
 			<%
 				}
+				faqDAO.close();
 			%>
 		</div>
 	</div>

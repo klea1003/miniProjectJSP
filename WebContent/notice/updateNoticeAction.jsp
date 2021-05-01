@@ -82,10 +82,7 @@
 			}
 		}
 		
-		noticeDAO.close();
-		
-		
-	
+		noticeDAO.close();	
 	%>
 </body>
 </html>
