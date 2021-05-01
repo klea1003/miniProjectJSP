@@ -2,10 +2,18 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<head>
+	<style>
+		.center_box {
+			position: absolute;
+			left: 40%;
+		}
+	</style>
+</head>
 <jsp:include page="/include/header.jsp" flush="false"/>
 <body>	
 	<!-- 로그인 양식 -->
-	<div class="container">		<!-- 하나의 영역 생성 -->
+	<div class="container center_box">		<!-- 하나의 영역 생성 -->
 		<div class="col-lg-4">	<!-- 영역 크기 -->
 			<!-- 점보트론은 특정 컨텐츠, 정보를 두드러지게 하기 위한 큰 박스 -->
 			<div class="jumbotron" style="padding-top: 20px;">

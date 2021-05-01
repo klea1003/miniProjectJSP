@@ -5,8 +5,16 @@
 <%@ page import="user.UserDAO" %>
 <!DOCTYPE html>
 <html>
+<head>
+	<style>
+		.center_box {
+			position: absolute;
+			left: 40%;
+		}
+	</style>
+</head>
 <jsp:include page="/include/header.jsp" flush="false"/>
-<body>
+<body sytle="text-align: center;">
 	<%
 		// 세션에 값이 담겨있는지 체크
 		String userID = null;
@@ -25,7 +33,7 @@
 		User user = userDAO.getUser(userID);
 	%>
 	<!-- 회원가입 양식 -->
-	<div class="container">		<!-- 하나의 영역 생성 -->
+	<div class="container center_box">		<!-- 하나의 영역 생성 -->
 		<div class="col-lg-4">	<!-- 영역 크기 -->
 			<!-- 점보트론은 특정 컨텐츠, 정보를 두드러지게 하기 위한 큰 박스 -->
 			<div class="jumbotron" style="padding-top: 20px;">
