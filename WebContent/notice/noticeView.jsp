@@ -24,8 +24,14 @@
 	}
 	
 	UserDAO userDAO = new UserDAO();
-	User user = userDAO.getUser(userID);
-	int admin = user.getAdmin();
+	User user = null;
+	int admin = 0;	
+	if(userID != null) {
+		user = userDAO.getUser(userID);
+		admin = user.getAdmin();
+	}
+	
+	
 
 	int noticeID = 0;
 	if(request.getParameter("noticeID") != null) {
@@ -39,8 +45,8 @@
 		script.println("location.href='notice.jsp'");
 		script.println("</script>");
 	}
-	
-	Notice notice = new NoticeDAO().getNotice(noticeID);
+	NoticeDAO noticeDAO = new NoticeDAO();
+	Notice notice = noticeDAO.getNotice(noticeID);
 	%>
 	
 	<!-- 게시판 메인 페이지 영역 시작 -->
@@ -85,7 +91,9 @@
 						"deleteNoticeAction.jsp?noticeID=<%= noticeID %>" class="btn btn-primary">삭제</a>
 			<%
 				}
+				noticeDAO.close();
 			%>
+			
 		</div>
 	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->

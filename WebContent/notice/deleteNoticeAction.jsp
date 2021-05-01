@@ -41,7 +41,8 @@
 		}
 		
 		//해당 'noticeID'에 대한 게시글을 가져온 다음 세션을 통하여 작성자 본인이 맞는지 체크한다
-		Notice notice = new NoticeDAO().getNotice(noticeID);
+		NoticeDAO noticeDAO  = new NoticeDAO();
+		Notice notice = noticeDAO.getNotice(noticeID);
 		UserDAO userDAO = new UserDAO();
 		User user = userDAO.getUser(userID);
 		int admin = user.getAdmin();
@@ -53,7 +54,6 @@
 			script.println("</script>");
 		} else{
 			// 글 삭제 로직을 수행한다
-			NoticeDAO noticeDAO = new NoticeDAO();
 			int result = noticeDAO.delete(noticeID);
 			// 데이터베이스 오류인 경우
 			if(result == -1){
@@ -69,8 +69,10 @@
 				script.println("alert('글 삭제하기 성공')");
 				script.println("location.href='notice.jsp'");
 				script.println("</script>");
-			}			
-		}	
+			}
+			
+		}
+		noticeDAO.close();
 	%>
 </body>
 </html>

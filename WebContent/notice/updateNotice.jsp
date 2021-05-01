@@ -42,7 +42,8 @@
 			script.println("</script>");
 		}
 		//해당 'noticeID'에 대한 게시글을 가져온 다음 세션을 통하여 작성자 본인이 맞는지 체크한다
-		Notice notice = new NoticeDAO().getNotice(noticeID);
+		NoticeDAO noticeDAO = new NoticeDAO();
+		Notice notice = noticeDAO.getNotice(noticeID);
 		UserDAO userDAO = new UserDAO();
 		User user = userDAO.getUser(userID);
 		int admin = user.getAdmin();
@@ -53,6 +54,8 @@
 			script.println("location.href='notice.jsp'");
 			script.println("</script>");
 		}
+		
+		noticeDAO.close();
 	%>
 	
 	<!-- 게시판 메인 페이지 영역 시작 -->

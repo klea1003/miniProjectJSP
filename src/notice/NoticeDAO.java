@@ -56,8 +56,6 @@ public class NoticeDAO {
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return -1; //데이터베이스 오류
 	}
@@ -100,8 +98,6 @@ public class NoticeDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return list; // 전체 게시물 반환
 	}
@@ -117,8 +113,6 @@ public class NoticeDAO {
 			}			
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return false;
 	}
@@ -142,8 +136,6 @@ public class NoticeDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return null;
 	}
@@ -159,8 +151,6 @@ public class NoticeDAO {
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return -1; //데이터베이스 오류
 	}
@@ -175,9 +165,11 @@ public class NoticeDAO {
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return -1; //데이터베이스 오류 
+	}
+	
+	public void close() {
+		JdbcUtil.close(conn, pstmt, rs);
 	}
 }
