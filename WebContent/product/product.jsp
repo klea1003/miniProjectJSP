@@ -70,7 +70,7 @@
 	%>
 	<div>
 		<div class="left"><img src="<%=request.getContextPath()%>/images/<%= book.getBookImagePath() %>.jpeg"></div>  
-		<form class="info" method="post" action="cartAction.jsp">
+		<form class="info" method="post" action="../cart/cartAction.jsp">
 			<input type="hidden" name="bookID" value=<%= bookID %>>
 			<div class="line1"></div>
 			<div class="info_one_line"><h2><%= book.getBookTitle()%></h2></div>
@@ -92,7 +92,7 @@
 			<div class="empty1"></div>
 			<div class="info_one_line">
 				<input type="submit" class="btn btn-primary" value="상품 주문">
-				<a href="cart.jsp"><button class="btn btn-secondary" type="button">장바구니</button></a>
+				<a href="../cart/cart.jsp"><button class="btn btn-secondary" type="button">장바구니</button></a>
 			</div>
 			<div class="empty1"></div>			
 			<div class="line1"></div>
