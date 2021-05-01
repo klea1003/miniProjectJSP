@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-	<Resource name="OracleDB" 
-	auth="Container" 
-	type="javax.sql.DataSource" 
-	username="scott" 
-	password="tiger" 
-	driverClassName="oracle.jdbc.driver.OracleDriver"
-	factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
-	url="jdbc:oracle:thin:@127.0.0.1:1521:XE"
-	maxActive="500"
-	minIdle="100" />
+   <Resource name="OracleDB" 
+    auth="Container" 
+    type="javax.sql.DataSource" 
+    username="c##mini" 
+    password="1234" 
+    driverClassName="oracle.jdbc.driver.OracleDriver"
+    factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+    url="jdbc:oracle:thin:@klea-home.iptime.org:1521:XE"
+    maxActive="1000"
+    minIdle="100" />
 </Context>
+

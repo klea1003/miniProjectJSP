@@ -7,6 +7,14 @@
 <%@ page import="faq.FaqDAO"%>
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+	#container {
+		width: 1000px;
+		float: right;
+	}
+</style>
+</head>
 <jsp:include page="/include/header.jsp" flush="false"/>
 <body>
 	<%
@@ -38,7 +46,7 @@
 	%>
 	
 	<!-- 게시판 메인 페이지 영역 시작 -->
-	<div class="container">
+	<div id="container">
 		<div class="row">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 				<thead>

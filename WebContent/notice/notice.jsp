@@ -9,6 +9,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<style>
+		#container {
+			width: 1000px;
+			float: right;
+		}
+	</style>
 </head>
 <jsp:include page="/include/header.jsp" flush="false"/>
 <body>
@@ -37,7 +43,7 @@
 	%>
 	
 	<!-- 게시판 메인 페이지 영역 시작 -->
-	<div class="container">
+	<div id="container">
 		<div>
 	    	<p style="font-size:28px">공지사항</p>
 	   	</div>

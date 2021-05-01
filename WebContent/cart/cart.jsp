@@ -22,11 +22,10 @@
 	}
 </script>
 <style>
-
-#container {
-	width: 1000px;
-	float: right;
-}
+	#container {
+		width: 1000px;
+		float: right;
+	}
 </style>
 </head>
 <jsp:include page="/include/header.jsp" flush="false"/>
