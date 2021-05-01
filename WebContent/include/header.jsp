@@ -41,6 +41,12 @@ body {
     height: 50px;
     padding: 15px;
 }
+.font-face{
+	font-size:30px;
+	position: absolute;
+	left: 200px;
+	padding: 50px;
+}
 
 </style>
 <!-- 화면 최적화 -->
@@ -61,6 +67,8 @@ body {
 </head>
 <body>
 	<header id="main_header">
+	<p class="font-face">INDIEBOOK</p>
+		
 		<div class="login_menu">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
