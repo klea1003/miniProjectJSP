@@ -54,11 +54,12 @@ public class BookDAO {
 		}
 		
 	//책 번호 부여 메소드
-	public int getNext() {
+	public int getNext(int category) {
 		//현재 책을 내림차순으로 조회하여 가장 마지막 책의 번호를 구한다
-		String sql = "select bookID from BOOK order by bookID desc";
+		String sql = "select bookID from BOOK WHERE BOOKCATEGORY=? order by bookID desc";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, category);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				return rs.getInt(1) + 1;
@@ -77,7 +78,7 @@ public class BookDAO {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, category);
-			pstmt.setInt(2, getNext() - (pageNumber - 1) * bookInPage);
+			pstmt.setInt(2, getNext(category) - (pageNumber - 1) * bookInPage);
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -104,7 +105,7 @@ public class BookDAO {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, category);
-			pstmt.setInt(2, getNext() - (pageNumber - 1) * bookInPage);
+			pstmt.setInt(2, getNext(category) - (pageNumber - 1) * bookInPage);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				return true;
