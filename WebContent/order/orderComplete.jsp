@@ -5,6 +5,8 @@
 <%@ page import="user.UserDAO"%>
 <%@ page import="cart.CartStock"%>
 <%@ page import="cart.CartDAO"%>
+<%@ page import="book.Book"%>
+<%@ page import="book.BookDAO"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
@@ -35,6 +37,8 @@
 		
 		CartDAO cartDAO = new CartDAO();
 		ArrayList<CartStock> list = cartDAO.getOrderCompleteList(userID, orderID);
+		
+		BookDAO bookDAO = new BookDAO();
 	%>
 	<div id="container">
 		<h2>주문 완료되었습니다.</h2>
@@ -60,6 +64,7 @@
 			
 			<thead>
 				<tr>
+					<th style="background-color: #eeeeee; text-align: center;">상품 이미지</th>
 					<th style="background-color: #eeeeee; text-align: center;">책 제목</th>
 					<th style="background-color: #eeeeee; text-align: center;">가격</th>
 					<th style="background-color: #eeeeee; text-align: center;">수량</th>
@@ -69,14 +74,18 @@
 			<tbody>
 				<%
 					for(CartStock cartStock: list) {
+						int bookID = cartStock.getBookID();
+						Book book = bookDAO.getBook(bookID);
 				%>	
 					<tr>
-							<td><a href="product.jsp?bookID=<%= cartStock.getBookID() %>">
-							<%= cartStock.getBookTitle() %></a></td>
-							<td><%= cartStock.getBookPrice() %></td>
-							<td><%= cartStock.getBookAmount() %></td>
-							<td><%= cartStock.getTotalPrice() %></td>								
-						</tr>	
+						<td><a href="../product/product.jsp?bookID=<%= book.getBookID()%>">
+							<img src="<%=request.getContextPath()%>/images/<%= book.getBookImagePath() %>.jpeg" width="100"></a></td>
+						<td><a href="../product/product.jsp?bookID=<%= cartStock.getBookID() %>">
+						<%= cartStock.getBookTitle() %></a></td>
+						<td><%= cartStock.getBookPrice() %></td>
+						<td><%= cartStock.getBookAmount() %></td>
+						<td><%= cartStock.getTotalPrice() %></td>								
+					</tr>	
 				<%
 					}
 				%>
@@ -89,6 +98,7 @@
 	<%
 	
 	cartDAO.close();
+	bookDAO.close();
 	%>
 	
 	<!-- 게시판 메인 페이지 영역 끝 -->

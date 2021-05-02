@@ -3,6 +3,8 @@
 <%@page import="java.io.PrintWriter"%>
 <%@ page import="cart.CartStock"%>
 <%@ page import="cart.CartDAO"%>
+<%@ page import="book.Book"%>
+<%@ page import="book.BookDAO"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
@@ -25,6 +27,9 @@
 	#container {
 		width: 1000px;
 		float: right;
+	}
+	#bookImage {
+		widht: 200px;
 	}
 </style>
 </head>
@@ -53,7 +58,8 @@
 				<thead>
 					<tr>
 						<th style="background-color: #eeeeee; text-align: center;">목록</th>
-						<th style="background-color: #eeeeee; text-align: center;">책 제목</th>
+						<th style="background-color: #eeeeee; text-align: center;">상품 이미지</th>
+						<th style="background-color: #eeeeee; text-align: center;">제목</th>
 						<th style="background-color: #eeeeee; text-align: center;">가격</th>
 						<th style="background-color: #eeeeee; text-align: center;">수량</th>
 						<th style="background-color: #eeeeee; text-align: center;">합계</th>
@@ -63,11 +69,18 @@
 					<%
 						CartDAO cartDAO = new CartDAO();
 						ArrayList<CartStock> list = cartDAO.getStockList(userID);
+						BookDAO bookDAO = new BookDAO();
 						for(CartStock cartStock: list) {
 					%>						
 						<tr>
-							<td><input type="checkbox" name="checkList" value="<%= cartStock.getBookID() %>"></td>
-							<td><a href="product.jsp?bookID=<%= cartStock.getBookID() %>">
+							<%
+								int bookID = cartStock.getBookID();
+								Book book = bookDAO.getBook(bookID);
+							%>
+							<td><input type="checkbox" name="checkList" value="<%= bookID %>"></td>
+							<td><a href="../product/product.jsp?bookID=<%= book.getBookID()%>">
+								<img src="<%=request.getContextPath()%>/images/<%= book.getBookImagePath() %>.jpeg" width="100"></a></td>
+							<td><a href="../product/product.jsp?bookID=<%= cartStock.getBookID() %>">
 							<%= cartStock.getBookTitle() %></a></td>
 							<td><%= cartStock.getBookPrice() %></td>
 							<td><%= cartStock.getBookAmount() %></td>
@@ -77,6 +90,7 @@
 						}
 						
 						cartDAO.close();
+						bookDAO.close();
 					%>
 						
 				</tbody>
