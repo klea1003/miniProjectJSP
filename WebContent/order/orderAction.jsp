@@ -46,12 +46,12 @@ request.setCharacterEncoding("utf-8");
 			}
 	    }
 		
-		//String orderString = String.format("location.href='orderComplete.jsp?orderID=%d'", nextOrderID);
+		String orderString = String.format("location.href='orderComplete.jsp?orderID=%d'", nextOrderID);
 		
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('주문 완료되었습니다.')");
-		//script.println(orderString);
+		script.println(orderString);
 		script.println("</script>");
 		
 		cartDAO.close();

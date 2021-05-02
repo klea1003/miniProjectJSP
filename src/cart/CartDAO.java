@@ -171,6 +171,34 @@ public class CartDAO {
 		return -1; // 데이터베이스 오류
 	}
 	
+	public ArrayList<CartStock> getOrderCompleteList(String userID, int orderID) {
+		String sql = "select b.bookID, b.bookTitle, b.bookPrice, SUM(c.BOOKAMOUNT) as TotalAmount, SUM(b.bookPrice*c.bookAmount) as TotalPrice "
+				+ "from cart c, book b "
+				+ "where c.bookid = b.bookid and c.userID = ? and orderCompleted = 1 and orderID = ? and DELETECART = 0 "
+				+ "group by b.bookID, b.bookTitle, b.bookPrice";
+		ArrayList<CartStock> list = new ArrayList<CartStock>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userID);
+			pstmt.setInt(2, orderID);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				CartStock cartStock = new CartStock();
+
+				cartStock.setBookID(rs.getInt(1));
+				cartStock.setBookTitle(rs.getString(2));
+				cartStock.setBookPrice(rs.getInt(3));
+				cartStock.setBookAmount(rs.getInt(4));
+				cartStock.setTotalPrice(rs.getInt(5));
+
+				list.add(cartStock);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	public void close() {
 		JdbcUtil.close(conn, pstmt, rs);
 	}

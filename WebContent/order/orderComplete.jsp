@@ -3,6 +3,8 @@
 <%@page import="java.io.PrintWriter"%>
 <%@ page import="user.User"%>
 <%@ page import="user.UserDAO"%>
+<%@ page import="cart.CartStock"%>
+<%@ page import="cart.CartDAO"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
@@ -30,28 +32,64 @@
 		
 		UserDAO userDAO = new UserDAO();
 		User user = userDAO.getUser(userID);
+		
+		CartDAO cartDAO = new CartDAO();
+		ArrayList<CartStock> list = cartDAO.getOrderCompleteList(userID, orderID);
 	%>
 	<div id="container">
 		<h2>주문 완료되었습니다.</h2>
-		
 		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 			<thead>
 				<tr>
 					<th style="background-color: #eeeeee; text-align: center;">받는 사람</th>
-					<th style="background-color: #eeeeee; text-align: center;"><%= user.getUserName() %></th>
+					<th style="background-color: #eeeeee; text-align: center;">주소</th>
+				</tr>
+				
+			</thead>
+			<tobdy>
+				<tr>
+					<td><%= user.getUserName() %></td>
+					<td>주소</td>
+				</tr>
+			</tobdy>
+		</table>
+			
+			
+		
+		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+			
+			<thead>
+				<tr>
+					<th style="background-color: #eeeeee; text-align: center;">책 제목</th>
+					<th style="background-color: #eeeeee; text-align: center;">가격</th>
+					<th style="background-color: #eeeeee; text-align: center;">수량</th>
+					<th style="background-color: #eeeeee; text-align: center;">합계</th>
 				</tr>
 			</thead>
 			<tbody>
+				<%
+					for(CartStock cartStock: list) {
+				%>	
 					<tr>
-						<td></td>
-						<td>주소 블라블라</td>
-					</tr>
+							<td><a href="product.jsp?bookID=<%= cartStock.getBookID() %>">
+							<%= cartStock.getBookTitle() %></a></td>
+							<td><%= cartStock.getBookPrice() %></td>
+							<td><%= cartStock.getBookAmount() %></td>
+							<td><%= cartStock.getTotalPrice() %></td>								
+						</tr>	
+				<%
+					}
+				%>
 	
 			</tbody>
 		</table>
 	
-		<a href="main.jsp" class="btn btn-primary">메인으로</a>
+		<a href="../product/MainCategoryView.jsp" class="btn btn-primary">메인으로</a>
 	</div>
+	<%
+	
+	cartDAO.close();
+	%>
 	
 	<!-- 게시판 메인 페이지 영역 끝 -->
 </body>
