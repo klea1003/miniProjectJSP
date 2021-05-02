@@ -7,6 +7,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+	#container {
+		width: 1000px;
+		float: right;
+	}
+</style>
 </head>
 <jsp:include page="/include/header.jsp" flush="false"/>
 <body>
@@ -16,30 +22,36 @@
 		if(session.getAttribute("userID") != null){
 			userID = (String)session.getAttribute("userID");
 		}
+		
+		int orderID = 1;
+		if (request.getParameter("orderID") != null) {
+			orderID = Integer.parseInt(request.getParameter("orderID"));
+		}
+		
+		UserDAO userDAO = new UserDAO();
+		User user = userDAO.getUser(userID);
 	%>
-	<h2>주문 완료되었습니다.</h2>
-	
-	<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-		<thead>
-			<tr>
-				<th style="background-color: #eeeeee; text-align: center;">받는 사람</th>
-				<th style="background-color: #eeeeee; text-align: center;">주소</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%
-				UserDAO userDAO = new UserDAO();
-				User user = userDAO.getUser(userID);
-			%>
+	<div id="container">
+		<h2>주문 완료되었습니다.</h2>
+		
+		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+			<thead>
 				<tr>
-					<td><%= user.getUserName() %></td>
-					<td>주소 블라블라</td>
+					<th style="background-color: #eeeeee; text-align: center;">받는 사람</th>
+					<th style="background-color: #eeeeee; text-align: center;"><%= user.getUserName() %></th>
 				</tr>
-
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+					<tr>
+						<td></td>
+						<td>주소 블라블라</td>
+					</tr>
 	
-	<a href="main.jsp" class="btn btn-primary">메인으로</a>
+			</tbody>
+		</table>
+	
+		<a href="main.jsp" class="btn btn-primary">메인으로</a>
+	</div>
 	
 	<!-- 게시판 메인 페이지 영역 끝 -->
 </body>

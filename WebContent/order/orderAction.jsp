@@ -36,20 +36,25 @@ request.setCharacterEncoding("utf-8");
 	} else {
 	
 		CartDAO cartDAO = new CartDAO(); 
+		int nextOrderID = cartDAO.getNextOrder();
 		for(String id:ids){
 			int bookID = Integer.parseInt(id);		
-			int result = cartDAO.order(bookID, userID);
+			int result = cartDAO.order(bookID, userID, nextOrderID);
 			
 			if(result == -1) {
 				throw new SQLException("DB 에러");
 			}
 	    }
 		
+		//String orderString = String.format("location.href='orderComplete.jsp?orderID=%d'", nextOrderID);
+		
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('주문 완료되었습니다.')");
-		script.println("location.href='orderComplete.jsp'");
+		//script.println(orderString);
 		script.println("</script>");
+		
+		cartDAO.close();
 	}
 	%>
 </body>

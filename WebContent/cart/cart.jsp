@@ -13,7 +13,7 @@
 		if(mode == "buy") { 
 			theForm.method = "post";
 			theForm.target = "_self";
-			theForm.action = "orderAction.jsp"; 
+			theForm.action = "../order/orderAction.jsp"; 
 		} else if(mode == "delete") { 
 			theForm.method = "post";
 			theForm.target = "_self";

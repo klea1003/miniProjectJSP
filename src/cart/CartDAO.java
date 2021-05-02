@@ -43,6 +43,23 @@ public class CartDAO {
 		return -1; // 데이터베이스 오류
 	}
 
+	public int getNextOrder() {
+		// 현재 게시글을 내림차순으로 조회하여 가장 마지막 글의 번호를 구한다
+		String sql = "select ORDERID from CART order by ORDERID desc";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getInt(1) + 1;
+			}
+			return 1; // 첫 번째 게시물인 경우
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // 데이터베이스 오류
+	}
+	
+	
 	public String getDate() {
 		String SQL = "SELECT TO_CHAR(SYSDATE, 'MM-DD-YYYY HH24:MI:SS')  FROM DUAL";
 		try {
@@ -58,7 +75,7 @@ public class CartDAO {
 	}
 
 	public int addCart(int bookID, String userID, int bookAmount) {
-		String sql = "insert into CART values (?, ?, ?, ?, TO_DATE(?, 'MM-DD-YYYY HH24:MI:SS'), 0, 0)";
+		String sql = "insert into CART values (?, ?, ?, ?, 0, 0, 0, TO_DATE(?, 'MM-DD-YYYY HH24:MI:SS'))";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, getNext());
@@ -124,13 +141,15 @@ public class CartDAO {
 		return list;
 	}
 
-	public int order(int bookID, String userID) {
-		// 실제 데이터를 삭제하는 것이 아니라 유효숫자를 '0'으로 수정한다
-		String sql = "update CART set ORDERCOMPLETED = 1 where bookID = ? and userID = ? and orderCompleted = 0 and DELETECART = 0";
+	public int order(int bookID, String userID, int orderID) {
+		// 실제 데이터를 삭제하는 것이 아니라 유효숫자를 '0'으로 수정한다 + order ID로 변경한다.
+		String sql = "update CART set ORDERCOMPLETED = 1, ORDERID = ? where bookID = ? and userID = ? and orderCompleted = 0 and DELETECART = 0";	
+		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, bookID);
-			pstmt.setString(2, userID);
+			pstmt.setInt(1, orderID);
+			pstmt.setInt(2, bookID);
+			pstmt.setString(3, userID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
