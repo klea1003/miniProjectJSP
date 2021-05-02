@@ -49,12 +49,14 @@ body {
 	padding: 50px;
 }
 
+.font-face a:hover{
+	color:grey;
+	text-decoration:none;
+}
+
 .font-face a{
 	color:#424242;
 }
-
-.font-face a:hover{
-	color:grey;
 
 </style>
 <!-- 화면 최적화 -->
