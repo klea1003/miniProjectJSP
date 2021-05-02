@@ -11,14 +11,15 @@ CREATE TABLE USERS (
     USERNAME VARCHAR2(20),
     USERGENDER VARCHAR2(20),
     USEREMAIL VARCHAR2(20),
+    USERADRESS VARCHAR2(80),
     ADMIN NUMBER(8) NOT NULL,
     PRIMARY KEY(USERID)    
 );
 COMMIT;
 
 -- 운영자 & 임시 유저 추가 
-INSERT INTO USERS VALUES('root', '1234', '운영자', '남자', 'root@naver.com', 1);
-INSERT INTO USERS VALUES('gildong', '123456', '홍길동', '남자', 'gildong@naver.com', 0);
+INSERT INTO USERS VALUES('root', '1234', '운영자', '남자', 'root@naver.com', '서울시 서울대입구', 1);
+INSERT INTO USERS VALUES('gildong', '123456', '홍길동', '남자', 'gildong@naver.com', '서울시 용산구', 0);
 COMMIT;
 
 

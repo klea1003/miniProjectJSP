@@ -49,7 +49,7 @@
 			<tobdy>
 				<tr>
 					<td><%= user.getUserName() %></td>
-					<td>주소</td>
+					<td><%= user.getUserAddress() %></td>
 				</tr>
 			</tobdy>
 		</table>

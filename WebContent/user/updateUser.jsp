@@ -76,6 +76,9 @@
 					<div class="form-group">
 						<input type="email" class="form-control" placeholder="이메일" name="userEmail" maxlength="20" value="<%= user.getUserEmail() %>">
 					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="주소" name="userAddress" maxlength="80" value="<%= user.getUserAddress() %>">
+					</div>
 					<input type="submit" class="btn btn-primary form-control" value="회원가입">
 				</form>
 			</div>
