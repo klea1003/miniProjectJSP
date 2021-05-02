@@ -75,6 +75,8 @@
 						</tr>						
 					<%
 						}
+						
+						cartDAO.close();
 					%>
 						
 				</tbody>

@@ -67,6 +67,8 @@
 		
 		Book book = bookDAO.getBook(bookID);
 		
+		bookDAO.close();
+		
 	%>
 	<div>
 		<div class="left"><img src="<%=request.getContextPath()%>/images/<%= book.getBookImagePath() %>.jpeg"></div>  

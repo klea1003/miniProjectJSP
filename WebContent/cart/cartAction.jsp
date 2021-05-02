@@ -45,6 +45,8 @@
 				script.println("location.href='cart.jsp'");
 				script.println("</script>");
 			}
+			
+			cartDAO.close();
 
 		}
 	

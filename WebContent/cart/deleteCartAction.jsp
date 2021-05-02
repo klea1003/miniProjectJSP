@@ -50,6 +50,8 @@ request.setCharacterEncoding("utf-8");
 		script.println("alert('삭제 완료되었습니다.')");
 		script.println("location.href='cart.jsp'");
 		script.println("</script>");
+		
+		cartDAO.close();
 	}
 	%>
 </body>

@@ -69,8 +69,6 @@ public class CartDAO {
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return -1; // 데이터베이스 오류
 	}
@@ -95,8 +93,6 @@ public class CartDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return list;
 	}
@@ -124,8 +120,6 @@ public class CartDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return list;
 	}
@@ -140,8 +134,6 @@ public class CartDAO {
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);
 		}
 		return -1; // 데이터베이스 오류
 	}
@@ -156,10 +148,12 @@ public class CartDAO {
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);
-		}
+		} 
 		return -1; // 데이터베이스 오류
+	}
+	
+	public void close() {
+		JdbcUtil.close(conn, pstmt, rs);
 	}
 
 }
