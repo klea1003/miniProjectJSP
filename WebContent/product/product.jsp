@@ -7,6 +7,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script language=javascript>
+	function getPost(mode) { 
+		var theForm = document.bookOrder;
+		if(mode == "cart") { 
+			theForm.method = "post";
+			theForm.target = "_self";
+			theForm.action = "../cart/cartAction.jsp"; 
+		} else if(mode == "directOrder") { 
+			theForm.method = "post";
+			theForm.target = "_self";
+			theForm.action = "../order/directOrderAction.jsp" 
+		}
+		theForm.submit(); 
+	}
+</script>
 <!-- Product Style sheet -->
 <style type="text/css">
 	.left {
@@ -72,7 +87,7 @@
 	%>
 	<div>
 		<div class="left"><img src="<%=request.getContextPath()%>/images/<%= book.getBookImagePath() %>.jpeg"></div>  
-		<form class="info" method="post" action="../cart/cartAction.jsp">
+		<form name="bookOrder" class="info" method="post">
 			<input type="hidden" name="bookID" value=<%= bookID %>>
 			<div class="line1"></div>
 			<div class="info_one_line"><h2><%= book.getBookTitle()%></h2></div>
@@ -93,8 +108,8 @@
 			</div>
 			<div class="empty1"></div>
 			<div class="info_one_line">
-				<input type="submit" class="btn btn-primary" value="상품 주문">
-				<a href="../cart/cart.jsp"><button class="btn btn-secondary" type="button">장바구니</button></a>
+				<input type="button" class="btn btn-primary" value="장바구니 추가" onClick="getPost('cart')">
+				<input type="button" class="btn btn-primary" value="구입" onClick="getPost('directOrder')">	
 			</div>
 			<div class="empty1"></div>			
 			<div class="line1"></div>

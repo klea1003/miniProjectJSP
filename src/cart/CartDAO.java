@@ -199,6 +199,23 @@ public class CartDAO {
 		return list;
 	}
 	
+	public int directOrder(int bookID, String userID, int bookAmount) {
+		int result = 0;
+		
+		result = addCart(bookID, userID, bookAmount);
+		
+		if(result == -1)
+			return -1;
+		
+		int nextOrderID = getNextOrder();
+		result = order(bookID, userID, nextOrderID);
+		
+		if(result == -1)
+			return result;
+		
+		return nextOrderID;
+	}
+	
 	public void close() {
 		JdbcUtil.close(conn, pstmt, rs);
 	}
