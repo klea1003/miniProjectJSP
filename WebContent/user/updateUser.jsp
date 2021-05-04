@@ -40,7 +40,7 @@
 				<form method="post" action="updateUserAction.jsp">
 					<h3 style="text-align: center;">회원 정보 수정</h3>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20" value="<%= user.getUserID() %>">
+						<input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20" value="<%= user.getUserID() %>" readonly>
 					</div>
 					<div class="form-group">
 						<input type="password" class="form-control" placeholder="비밀번호" name="userPassword" maxlength="20" value="<%= user.getUserPassword() %>">

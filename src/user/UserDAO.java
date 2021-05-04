@@ -95,4 +95,23 @@ public class UserDAO {
 		}
 		return null; // 데이터베이스 오류
 	}
+	
+	public int update(User user) {
+		String SQL = "UPDATE USERS set userpassword=?, username=?, usergender=?, useremail=?, useraddress=? WHERE userid=?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, user.getUserPassword());
+			pstmt.setString(2, user.getUserName());
+			pstmt.setString(3, user.getUserGender());
+			pstmt.setString(4, user.getUserEmail());
+			pstmt.setString(5, user.getUserAddress());
+			pstmt.setString(6, user.getUserID());
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, pstmt, rs);	
+		}
+		return -1;
+	}
 }
