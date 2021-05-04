@@ -18,7 +18,7 @@
 			<!-- 점보트론은 특정 컨텐츠, 정보를 두드러지게 하기 위한 큰 박스 -->
 			<div class="jumbotron" style="padding-top: 20px;">
 				<form method="post" action="joinAction.jsp">
-					<h3 style="text-align: center;">회원가입 화면</h3>
+					<h3 style="text-align: center;">회원 가입</h3>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20">
 					</div>
@@ -44,7 +44,7 @@
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="주소" name="userAddress" maxlength="80">
 					</div>
-					<input type="submit" class="btn btn-primary form-control" value="회원가입">
+					<input type="submit" class="btn btn-primary form-control" value="가입완료">
 				</form>
 			</div>
 		</div>	
