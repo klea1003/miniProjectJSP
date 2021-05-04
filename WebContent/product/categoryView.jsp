@@ -36,8 +36,11 @@
 	    display: block;         
 	}
 	.faceul a:link{
-	    color:black;
+	    color: #4f83cc;
 	    text-decoration:none;
+	}
+	.faceul a:visited{
+	    color: #4f83cc;
 	}
 	.faceul a:hover{
 	    color:red;

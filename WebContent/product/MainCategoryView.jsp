@@ -35,8 +35,11 @@
 	    display: block;         
 	}
 	.main a:link{
-	    color:black;
+	    color: #4f83cc;
 	    text-decoration:none;
+	}
+	.main a:visited{
+	    color: #4f83cc;
 	}
 	.main a:hover{
 	    color:red;
