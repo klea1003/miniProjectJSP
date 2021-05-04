@@ -11,6 +11,12 @@
 <meta charset="UTF-8">
 
 <style>
+	*{
+	    /*Remove the margins of all elements*/
+	    /*You can remove the left margin of li in ul to make it beautiful*/
+	    margin:0;
+	    padding:0;
+	}
 
 body {
 	width: 1500px;
@@ -58,13 +64,16 @@ body {
 	color:#424242;
 }
 
-#footer{ 
+.footer{ 
 	position:fixed;
 	bottom:0;
   	width:100%;
  	background:#f4f4f4;
 }
-
+.infooter{
+	list-style-type:none;
+	padding-left: 40px;
+}
 </style>
 <!-- 화면 최적화 -->
 <meta name="viewport" content="width-device-width" , initial-scale="1">
@@ -157,18 +166,15 @@ body {
 			</ul>	
 			
 		</nav>
-	<div class="wrapper">
-		<header></header>
-		<div id="container"></div>
-		<div id="footer">
+		<div class="footer">
 			<h4>COMPANY INFO</h4>
-			<p class="h4_line"></p>
+			<p id="h4_line"></p>
 			<ul>
-				<li><strong>회사명</strong> <span>인디북</span> <strong>대표</strong> <span>김루트</span>
+				<li class="infooter"><strong>회사명</strong> <span>인디북</span> <strong>대표</strong> <span>김루트</span>
 					<strong>대표전화</strong> <span>124-1234-1234</span> <strong>팩스</strong>
 					<span>1234-2222-3333</span></li>
-				<li><strong>주소</strong> <span>12345 서울 글로벌구 아이티로 12-34</span></li>
-				<li><strong>사업자 등록번호</strong> <span>123-45-12345</span> <strong>개인정보관리책임자</strong>
+				<li class="infooter"><strong>주소</strong> <span>12345 서울 글로벌구 아이티로 12-34</span></li>
+				<li class="infooter"><strong>사업자 등록번호</strong> <span>123-45-12345</span> <strong>개인정보관리책임자</strong>
 					<span>홍길동</span></li>
 			</ul>
 		</div>

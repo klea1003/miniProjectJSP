@@ -9,17 +9,6 @@
 <head>
 <!-- Product Style sheet -->
 <style type="text/css">
-	*{
-	    /*Remove the margins of all elements*/
-	    /*You can remove the left margin of li in ul to make it beautiful*/
-	    margin:0;
-	    padding:0;
-	}
-	
-	body {
-		width: 1200px;
-		margin: 0 auto;
-	}
 	
 	#div-box1{
 	    width:90%;

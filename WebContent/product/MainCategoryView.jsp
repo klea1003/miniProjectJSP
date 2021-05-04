@@ -8,14 +8,7 @@
 <html>
 <head>
 <!-- Product Style sheet -->
-<style type="text/css">
-	*{
-	    /*Remove the margins of all elements*/
-	    /*You can remove the left margin of li in ul to make it beautiful*/
-	    margin:0;
-	    padding:0;
-	}
-	
+<style type="text/css">	
 	#div-box1{
 	    margin:20px auto 0 auto;
 	    text-align: center;
