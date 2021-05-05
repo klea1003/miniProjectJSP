@@ -16,6 +16,7 @@
 	    /*You can remove the left margin of li in ul to make it beautiful*/
 	    margin:0;
 	    padding:0;
+	    
 	}
 
 body {
@@ -152,7 +153,7 @@ body {
 	</header>
 		<nav id="main_aside">
 			<ul>
-				<li class="inaside" style=" font-family:굴림; font-weight:700 " ><a href="<%=request.getContextPath()%>/product/MainCategoryView.jsp">장르별 베스트 셀러</a></li>
+				<li class="inaside" style=" font-family:굴림; font-weight:700 " ><a href="<%=request.getContextPath()%>/product/MainCategoryView.jsp">HOME</a></li>
 				<% 
 					for(int i=0; i<util.getCategoryLength(); i++){
 				%>
