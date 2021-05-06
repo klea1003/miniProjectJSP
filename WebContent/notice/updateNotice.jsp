@@ -56,6 +56,7 @@
 		}
 		
 		noticeDAO.close();
+		userDAO.close();
 	%>
 	
 	<!-- 게시판 메인 페이지 영역 시작 -->

@@ -42,8 +42,6 @@ public class UserDAO {
 			return -1; // 아이디가 없음
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);	
 		}
 		return -2; // 데이터베이스 오류
 	}
@@ -62,8 +60,6 @@ public class UserDAO {
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);	
 		}
 		return -1;
 	}
@@ -90,8 +86,6 @@ public class UserDAO {
 			return null; // 아이디가 없음
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);	
 		}
 		return null; // 데이터베이스 오류
 	}
@@ -109,9 +103,11 @@ public class UserDAO {
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(conn, pstmt, rs);	
 		}
 		return -1;
+	}
+	
+	public void close() {
+		JdbcUtil.close(conn, pstmt, rs);
 	}
 }

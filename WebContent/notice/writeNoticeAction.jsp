@@ -33,6 +33,7 @@
 			NoticeDAO noticeDAO = new NoticeDAO();
 			User user = userDAO.getUser(userID);
 			int admin = user.getAdmin();
+			userDAO.close();
 			
 			if(admin == 0){
 				PrintWriter script = response.getWriter();

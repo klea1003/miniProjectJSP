@@ -82,7 +82,8 @@
 			}
 		}
 		
-		noticeDAO.close();	
+		noticeDAO.close();
+		userDAO.close();
 	%>
 </body>
 </html>

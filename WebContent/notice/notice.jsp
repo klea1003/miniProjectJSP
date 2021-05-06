@@ -92,6 +92,7 @@
 				}
 			
 				noticeDAO.close();
+				userDAO.close();
 			%>
 		</div>
 	</div>

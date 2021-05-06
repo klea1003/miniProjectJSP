@@ -73,6 +73,7 @@
 			}			
 		}
 		faqDAO.close();
+		userDAO.close();
 	%>
 </body>
 </html>

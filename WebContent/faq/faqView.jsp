@@ -93,6 +93,7 @@
 			<%
 				}
 				faqDAO.close();
+				userDAO.close();
 			%>
 		</div>
 	</div>
